@@ -1,11 +1,17 @@
 #include <QApplication>
 #include <QtDeclarative>
+#include <QDesktopWidget>
 #include "qmlapplicationviewer.h"
 #include "keygrabber.h"
 
 extern "C" int qtmain(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    QDesktopWidget desktop;
+    int primary = desktop.primaryScreen();
+    QRect r = desktop.screenGeometry(primary);
+    int width = r.width();
+    int height = r.height() / 3;
 
     qmlRegisterType<KeyGrabber>("com.gappy.keygrabber", 1, 0, "KeyGrabber");
 
@@ -18,10 +24,10 @@ extern "C" int qtmain(int argc, char *argv[])
     viewer.setAttribute(Qt::WA_TranslucentBackground);
     viewer.setStyleSheet("background:transparent;");
     // no window decorations
-//    viewer.setWindowFlags(Qt::FramelessWindowHint);
-    viewer.showExpanded();
-    viewer.move(10, 10);
-
+    viewer.setWindowFlags(Qt::FramelessWindowHint);
+    viewer.resize(width, height);
+    viewer.move(0, r.height() - height);
+    viewer.show();
 
     return app.exec();
 }
