@@ -22,5 +22,5 @@ install(TARGETS keystroke-gui
                 WORLD_EXECUTE WORLD_READ
                 SETUID)
 
-install(FILES qml/KeyStrokeOverlay.qml qml/Key.qml qml/keystroke.js DESTINATION bin/qml)
+install(FILES qml/KeyStrokeOverlay.qml qml/Key.qml DESTINATION bin/qml)
 
