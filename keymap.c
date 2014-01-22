@@ -67,9 +67,9 @@ char* key_lookup(int keycode, int shift, int altgr)
     if (index != -1) {
         if (shift == 0 && altgr == 0)
             return map[index].key;
-        else if (shift == 1 && altgr == 0)
+        else if (shift > 0 && altgr == 0)
             return map[index].key_shift;
-        else if (shift == 0 && altgr == 1)
+        else if (shift == 0 && altgr > 0)
             return map[index].key_altgr;
         else
             return map[index].key;

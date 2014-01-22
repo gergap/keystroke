@@ -33,9 +33,12 @@ int main(int argc, char const *argv[])
     char device[] = "/dev/input/event4";
     int fd;
     int ret;
+    int shift = 0;
+    int altgr = 0;
     const char *symbol;
 
     loadmap("de.map");
+    //printmap();
 
     fd = open(device, O_RDONLY);
     if (fd < 0) die("Cannot open device '%s'\n", device);
@@ -58,10 +61,35 @@ int main(int argc, char const *argv[])
             //printf("event time=%i, type=%i, code=%i, value=%i\n", ev.time.tv_sec, ev.type, ev.code, ev.value);
             switch (ev.value) {
             case KEY_RELEASED:
+                switch (ev.code) {
+                case KEY_LEFTSHIFT:
+                    shift &= (~1);
+                    break;
+                case KEY_RIGHTSHIFT:
+                    shift &= (~2);
+                    break;
+                case KEY_RIGHTALT:
+                    altgr = 0;
+                    break;
+                default:
+                    break;
+                }
                 break;
             case KEY_PRESSED:
-                symbol = key_lookup(ev.code, 0, 0);
-                printf("pressed %s (%i)\n", symbol, ev.code);
+                switch (ev.code) {
+                case KEY_LEFTSHIFT:
+                    shift |= 1;
+                case KEY_RIGHTSHIFT:
+                    shift |= 2;
+                    break;
+                case KEY_RIGHTALT:
+                    altgr = 1;
+                    break;
+                default:
+                    symbol = key_lookup(ev.code, shift, altgr);
+                    printf("pressed %s (%i), shift=%i, altgr=%i\n", symbol, ev.code, shift, altgr);
+                    break;
+                }
                 break;
             case KEY_REPEATED:
                 break;
