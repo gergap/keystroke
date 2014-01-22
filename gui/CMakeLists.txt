@@ -18,7 +18,9 @@ target_link_libraries(keystroke-gui ${QT_LIBRARIES})
 install(TARGETS keystroke-gui
     DESTINATION bin
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-                GROUP_EXECUTE GROUP_READ  SETUID)
+                GROUP_EXECUTE GROUP_READ
+                WORLD_EXECUTE WORLD_READ
+                SETUID)
 
 install(FILES qml/KeyStrokeOverlay.qml qml/Key.qml qml/keystroke.js DESTINATION bin/qml)
 
