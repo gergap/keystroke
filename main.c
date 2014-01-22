@@ -11,6 +11,7 @@
 
 volatile int stop = 0;
 
+#define KBD_DEVICE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
 #define KEY_RELEASED 0
 #define KEY_PRESSED  1
 #define KEY_REPEATED 2
@@ -31,7 +32,7 @@ void die(const char *fmt, ...)
 int main(int argc, char const *argv[])
 {
     struct input_event ev;
-    char device[] = "/dev/input/event4";
+    char device[] = KBD_DEVICE;
     int fd;
     int ret;
     int shift = 0;
