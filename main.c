@@ -10,11 +10,9 @@
 #include <errno.h>
 
 volatile int stop = 0;
+int keyboard_fd = 0;
 
 #define KBD_DEVICE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-#define KEY_RELEASED 0
-#define KEY_PRESSED  1
-#define KEY_REPEATED 2
 
 #include "keymap.h"
 
@@ -33,7 +31,6 @@ int main(int argc, char const *argv[])
 {
     struct input_event ev;
     char device[] = KBD_DEVICE;
-    int fd;
     int ret;
     int shift = 0;
     int altgr = 0;
@@ -46,8 +43,8 @@ int main(int argc, char const *argv[])
 
     /* the 1st thing we do is opening the keyboard device,
      * note that you will need root privileges for that */
-    fd = open(device, O_RDONLY);
-    if (fd < 0) die("Cannot open device '%s'\n", device);
+    keyboard_fd = open(device, O_RDONLY);
+    if (keyboard_fd < 0) die("Cannot open device '%s'\n", device);
 
     /* the next thing is to drop root privileges if we were
      * started with setuid bit
@@ -61,8 +58,11 @@ int main(int argc, char const *argv[])
     loadmap("de.map");
     //printmap();
 
+#ifdef GUI
+    qtmain(argc, argv);
+#else
     while (!stop) {
-        ret = read(fd, &ev, sizeof(ev));
+        ret = read(keyboard_fd, &ev, sizeof(ev));
         if (ret == -1 && errno == EINTR)
             continue;
         if (ret < sizeof(ev)) {
@@ -115,7 +115,8 @@ int main(int argc, char const *argv[])
             }
         }
     }
-    close(fd);
+#endif
+    close(keyboard_fd);
 
     return 0;
 }
