@@ -16,7 +16,7 @@ struct key_entry map[NUM_SYMBOLS];
 void loadmap(const char *filename)
 {
     FILE *f = fopen(filename, "r");
-    int i;
+    int i = 0;
     int ret;
 
     if (f == 0) return;
