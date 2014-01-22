@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <stdarg.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -37,11 +38,28 @@ int main(int argc, char const *argv[])
     int altgr = 0;
     const char *symbol;
 
+    if (getuid() == 0) {
+        printf("WARNING: running as root!\nIt's recommended to start this application "
+               "as normal user, owned be root with setuid bit set (rwsr-xr-x).\n");
+    }
+
+    /* the 1st thing we do is opening the keyboard device,
+     * note that you will need root privileges for that */
+    fd = open(device, O_RDONLY);
+    if (fd < 0) die("Cannot open device '%s'\n", device);
+
+    /* the next thing is to drop root privileges if we were
+     * started with setuid bit
+     */
+    if (geteuid() == 0 && getuid() != 0) {
+        ret = seteuid(getuid());
+        if (ret != 0) die("seteuid failed.\n");
+        printf("Root privileges have been dropped. Running as normal user now.\n");
+    }
+
     loadmap("de.map");
     //printmap();
 
-    fd = open(device, O_RDONLY);
-    if (fd < 0) die("Cannot open device '%s'\n", device);
     while (!stop) {
         ret = read(fd, &ev, sizeof(ev));
         if (ret == -1 && errno == EINTR)
