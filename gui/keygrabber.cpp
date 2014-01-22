@@ -76,7 +76,7 @@ void KeyGrabber::run()
         }
 
         if (symbol) {
-            QString key = symbol;
+            QString key = QString::fromUtf8(symbol);
             emit keyPressed_Internal(key);
             symbol = 0;
         }
