@@ -24,3 +24,6 @@ install(TARGETS keystroke-gui
 
 install(FILES qml/KeyStrokeOverlay.qml qml/Key.qml DESTINATION bin/qml)
 
+file(GLOB PNG_FILES "png/*.png")
+install(FILES ${PNG_FILES} DESTINATION bin/png)
+
