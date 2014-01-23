@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QSystemTrayIcon>
+#include "ui_dialog.h"
 
 class Dialog : public QDialog
 {
@@ -27,6 +28,7 @@ private:
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
+    Ui_Dialog ui;
 };
 
 #endif /* end of include guard: DIALOG_H */

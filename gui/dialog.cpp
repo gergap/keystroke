@@ -3,6 +3,8 @@
 
 Dialog::Dialog() : QDialog()
 {
+    ui.setupUi(this);
+
     if (QSystemTrayIcon::isSystemTrayAvailable())
         qDebug() << "Systemtray is available.";
     else
