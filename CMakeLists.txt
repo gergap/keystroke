@@ -8,5 +8,7 @@ add_subdirectory(gui)
 install(TARGETS keystroke
     DESTINATION bin
     PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-                GROUP_EXECUTE GROUP_READ  SETUID)
+                GROUP_EXECUTE GROUP_READ
+                WORLD_EXECUTE WORLD_READ
+                SETUID)
 
