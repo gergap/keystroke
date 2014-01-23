@@ -9,13 +9,11 @@ Item {
     Text {
         id: label
         anchors.fill: parent
-        /*width: 128
-        height: 192*/
         color: "#ffffff"
         text: "Key"
         smooth: true
         style: Text.Raised
-        font.pointSize: 128
+        font.pointSize: 100
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         visible: false
@@ -59,7 +57,7 @@ Item {
             } else {
                 pic.visible = false;
                 label.visible = true;
-                key.width = 128 * text.length;
+                key.width = 100 * text.length;
             }
         }
     }
