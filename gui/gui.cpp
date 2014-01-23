@@ -24,7 +24,7 @@ extern "C" int qtmain(int argc, char *argv[])
     viewer.setAttribute(Qt::WA_TranslucentBackground);
     viewer.setStyleSheet("background:transparent;");
     // no window decorations
-    viewer.setWindowFlags(Qt::FramelessWindowHint);
+    viewer.setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     viewer.resize(width, height);
     viewer.move(0, r.height() - height);
     viewer.show();
