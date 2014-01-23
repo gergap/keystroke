@@ -6,6 +6,14 @@ Item {
     height: 192
     property alias text: label.text
 
+    /*
+    Rectangle {
+        id: debug
+        color: "#ff0000"
+        anchors.fill: parent
+    }
+    */
+
     Text {
         id: label
         anchors.fill: parent

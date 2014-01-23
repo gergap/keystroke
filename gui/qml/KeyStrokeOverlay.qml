@@ -25,8 +25,6 @@ Item {
             id: repeater
             model: 30
             Key {
-                width: 100
-                height: 80
                 text: "Key"
                 visible: false
             }
