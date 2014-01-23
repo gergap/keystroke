@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
     void loadmap(const char *filename);
-    char* key_lookup(int keycode, int shift, int altgr);
+    const char* key_lookup(int keycode, int shift, int altgr);
 
 #ifdef __cplusplus
 }
