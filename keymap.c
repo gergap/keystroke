@@ -55,12 +55,12 @@ static int key_translation_lookup(const char *symbol)
     return -1;
 }
 
-const char* key_lookup(int keycode, int shift, int altgr)
+const char *key_lookup(int keycode, int shift, int altgr)
 {
     const char *symbol;
     int index;
 
-    if (keycode < 0 || keycode >KEY_MAX) return NULL;
+    if (keycode < 0 || keycode > KEY_MAX) return NULL;
     symbol = keycodes[keycode];
 
     index = key_translation_lookup(symbol);
@@ -73,6 +73,21 @@ const char* key_lookup(int keycode, int shift, int altgr)
             return map[index].key_altgr;
         else
             return map[index].key;
+    } else {
+        /* some default mappings */
+        if (   strcmp(symbol, "LEFTCTRL") == 0
+            || strcmp(symbol, "RIGHTCTRL") == 0) {
+            symbol = "CTRL";
+        } else if (   strcmp(symbol, "LEFTALT") == 0
+                   || strcmp(symbol, "RIGHTALT") == 0) {
+            symbol = "ALT";
+        } else if (   strcmp(symbol, "LEFTSHIFT") == 0
+                   || strcmp(symbol, "RIGHTSHIFT") == 0) {
+            symbol = "SHIFT";
+        } else if (   strcmp(symbol, "LEFTMETA") == 0
+                   || strcmp(symbol, "RIGHTMETA") == 0) {
+            symbol = "META";
+        }
     }
 
     return symbol;
