@@ -7,11 +7,13 @@ add_definitions(${QT_DEFINITIONS})
 include_directories(/usr/share/qt4/mkspecs/linux-g++)
 
 include_directories(qmlapplicationviewer)
-qt4_wrap_cpp(KEYSTROKE_MOC qmlapplicationviewer/qmlapplicationviewer.h keygrabber.h)
+qt4_wrap_cpp(KEYSTROKE_MOC qmlapplicationviewer/qmlapplicationviewer.h keygrabber.h dialog.h)
+
+qt4_add_resources(KEYSTROKE_RCC_SRCS keystroke.qrc)
 
 add_definitions(-DGUI)
-add_executable(keystroke-gui ${KEYSTROKE_MOC} ../main.c ../keymap.c
-    gui.cpp keygrabber.cpp
+add_executable(keystroke-gui ${KEYSTROKE_MOC} ${KEYSTROKE_RCC_SRCS} ../main.c ../keymap.c
+    gui.cpp keygrabber.cpp dialog.cpp
     qmlapplicationviewer/qmlapplicationviewer.cpp)
 target_link_libraries(keystroke-gui ${QT_LIBRARIES})
 

@@ -24,7 +24,7 @@ void KeyGrabber::run()
     int altgr = 0;
     const char *symbol = 0;
 
-    while(!m_bShutdown) {
+    while (!m_bShutdown) {
         ret = read(keyboard_fd, &ev, sizeof(ev));
         if (ret == -1 && errno == EINTR)
             continue;

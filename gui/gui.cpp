@@ -1,8 +1,10 @@
 #include <QApplication>
 #include <QtDeclarative>
 #include <QDesktopWidget>
+#include <QSystemTrayIcon>
 #include "qmlapplicationviewer.h"
 #include "keygrabber.h"
+#include "dialog.h"
 
 extern "C" int qtmain(int argc, char *argv[])
 {
@@ -12,6 +14,10 @@ extern "C" int qtmain(int argc, char *argv[])
     QRect r = desktop.screenGeometry(primary);
     int width = r.width();
     int height = r.height() / 3;
+    int ret;
+    Dialog dlg;
+
+    dlg.show();
 
     qmlRegisterType<KeyGrabber>("com.gappy.keygrabber", 1, 0, "KeyGrabber");
 
@@ -29,6 +35,8 @@ extern "C" int qtmain(int argc, char *argv[])
     viewer.move(0, r.height() - height);
     viewer.show();
 
-    return app.exec();
+    ret = app.exec();
+
+    return ret;
 }
 
