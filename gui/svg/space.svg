@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="65.001373"
-   height="25.094145"
+   width="65"
+   height="65"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="space.svg"
-   inkscape:export-filename="/home/gergap/tmp/keystroke/gui/png/enter.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/space.png"
+   inkscape:export-xdpi="265.84616"
+   inkscape:export-ydpi="265.84616">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6"
-     inkscape:cx="24.174644"
+     inkscape:cx="7.733693"
      inkscape:cy="10.355568"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -68,7 +68,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-9.9991232,-1012.2809)">
+     transform="translate(-9.9991232,-972.37504)">
     <path
        style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 15,1017.3622 0,15 55,0 0,-15"

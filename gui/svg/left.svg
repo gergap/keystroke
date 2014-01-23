@@ -9,15 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="90"
-   height="80.000023"
+   width="100"
+   height="100"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="left.svg"
-   inkscape:export-filename="/home/gergap/tmp/keystroke/gui/png/enter.png"
-   inkscape:export-xdpi="90"
-   inkscape:export-ydpi="90">
+   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/left.png"
+   inkscape:export-xdpi="172.8"
+   inkscape:export-ydpi="172.8">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="7.8537546"
+     inkscape:cx="1.2880899"
      inkscape:cy="31.069869"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -37,10 +37,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1600"
-     inkscape:window-height="876"
-     inkscape:window-x="-6"
-     inkscape:window-y="-4"
+     inkscape:window-width="1272"
+     inkscape:window-height="975"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -68,19 +68,18 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(5,-967.36218)">
+     transform="translate(5,-947.3622)">
     <path
        style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 35,992.36218 0,-20 -35,35.00002 35,35 0,-50.00001"
+       d="m 40,982.36219 0,-20 -35,35.00002 35,34.99999 0,-50"
        id="path2996"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccc" />
     <path
        style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="M 40,60.000005 85,60"
+       d="m 40,997.3622 45,-10e-6"
        id="path3768"
        inkscape:connector-curvature="0"
-       transform="translate(-5,947.36218)"
        sodipodi:nodetypes="cc" />
   </g>
 </svg>
