@@ -37,6 +37,11 @@ Item {
                 pic.visible = true;
                 label.visible = false;
                 key.width = 128;
+            } else if (text === "META") {
+                pic.source = "../png/tux_white.png";
+                pic.visible = true;
+                label.visible = false;
+                key.width = 128;
             } else if (text === "SHIFT") {
                 pic.source = "../png/shift.png";
                 pic.visible = true;
