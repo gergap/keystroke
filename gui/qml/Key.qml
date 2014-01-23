@@ -65,10 +65,6 @@ Item {
         source: "../png/enter.png"
         anchors.fill: parent
         visible: false
+        smooth: true
     }
-/*
-    onVisibleChanged: {
-        width = 90 * text.length;
-    }
-*/
 }
