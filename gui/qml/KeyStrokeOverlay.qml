@@ -48,6 +48,7 @@ Item {
             timer.stop();
             timer.start();
             main.visible = true;
+            mainWindow.show();
         }
     }
 
@@ -60,6 +61,7 @@ Item {
                 repeater.itemAt(i).visible = false;
             }
             main.visible = false;
+            mainWindow.hide();
         }
     }
 }

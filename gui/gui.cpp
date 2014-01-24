@@ -13,7 +13,7 @@ extern "C" int qtmain(int argc, char *argv[])
     int primary = desktop.primaryScreen();
     QRect r = desktop.screenGeometry(primary);
     int width = r.width();
-    int height = r.height() / 3;
+    int height = r.height() / 4;
     int ret;
     Dialog dlg;
 
@@ -24,7 +24,8 @@ extern "C" int qtmain(int argc, char *argv[])
     QmlApplicationViewer viewer;
     viewer.addImportPath(QLatin1String("modules"));
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
-//    viewer.rootContext()->setContextProperty("globalGrabber", &grabber);
+    // we make our mainwindow accessible from QML, so we can hide it
+    viewer.rootContext()->setContextProperty("mainWindow", &viewer);
     viewer.setMainQmlFile(QLatin1String("qml/KeyStrokeOverlay.qml"));
     // transparent background
     viewer.setAttribute(Qt::WA_TranslucentBackground);
