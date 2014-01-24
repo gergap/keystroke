@@ -9,12 +9,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="144.125"
-   height="107.09375"
+   width="192"
+   height="192"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="shift.svg"
+   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/shift.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,8 +28,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="136.95823"
-     inkscape:cy="36.082667"
+     inkscape:cx="73.922516"
+     inkscape:cy="62.594906"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -34,10 +37,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1600"
-     inkscape:window-height="876"
-     inkscape:window-x="-6"
-     inkscape:window-y="-4"
+     inkscape:window-width="1920"
+     inkscape:window-height="1145"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -65,10 +68,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(7.0625,-945.28125)">
+     transform="translate(7.0625,-860.375)">
     <path
        style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 65,952.36218 -60,60.00002 30,0 0,35 60,0 0,-35 30,0 z"
+       d="m 88.9375,908.87499 -60,60.00002 30,0 0,34.99999 60,0 0,-34.99999 30,0 z"
        id="path2996"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccccccc" />

@@ -14,8 +14,8 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="left.svg"
-   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/left.png"
+   sodipodi:docname="up.svg"
+   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/up.png"
    inkscape:export-xdpi="172.8"
    inkscape:export-ydpi="172.8">
   <defs
@@ -71,7 +71,7 @@
      transform="translate(5,-947.3622)">
     <g
        id="g3779"
-       transform="translate(2.5,10e-6)">
+       transform="matrix(0,1,-1,0,1042.3622,954.8622)">
       <path
          sodipodi:nodetypes="ccccc"
          inkscape:connector-curvature="0"

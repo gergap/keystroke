@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="100"
+   width="130"
    height="100"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="left.svg"
-   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/left.png"
+   sodipodi:docname="tab.svg"
+   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/tabt.png"
    inkscape:export-xdpi="172.8"
    inkscape:export-ydpi="172.8">
   <defs
@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="56.281472"
-     inkscape:cy="31.069869"
+     inkscape:zoom="5.6"
+     inkscape:cx="15.706289"
+     inkscape:cy="34.248512"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -37,11 +37,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="956"
-     inkscape:window-height="1138"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0">
+     inkscape:window-width="1920"
+     inkscape:window-height="1145"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
        id="grid3001"
@@ -70,20 +70,30 @@
      id="layer1"
      transform="translate(5,-947.3622)">
     <g
-       id="g3779"
-       transform="translate(2.5,10e-6)">
-      <path
-         sodipodi:nodetypes="ccccc"
-         inkscape:connector-curvature="0"
-         id="path2996"
-         d="m 40,982.36219 0,-5.00001 -45,20 45,20.00002 0,-35"
-         style="fill:#ffffff;fill-opacity:1;stroke:none" />
+       id="g3767"
+       transform="translate(21,0)">
+      <g
+         transform="matrix(-1,0,0,-1,87.50001,1994.7244)"
+         id="g3779">
+        <path
+           style="fill:#ffffff;fill-opacity:1;stroke:none"
+           d="m 40,982.36219 0,-5.00001 -45,20 45,20.00002 0,-35"
+           id="path2996"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="ccccc" />
+        <path
+           style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+           d="m 40,997.3622 67.50001,2e-5"
+           id="path3768"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
-         id="path3768"
-         d="m 40,997.3622 45,-10e-6"
-         style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+         id="path2997"
+         d="m 98,982.36218 0,30.00002"
+         style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     </g>
   </g>
 </svg>

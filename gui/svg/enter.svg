@@ -9,24 +9,27 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="192"
-   height="192"
+   width="100"
+   height="100"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="enter.svg">
+   sodipodi:docname="enter.svg"
+   inkscape:export-filename="/home/gergap/work/keystroke/gui/png/enter.png"
+   inkscape:export-xdpi="172.8"
+   inkscape:export-ydpi="172.8">
   <defs
      id="defs4" />
   <sodipodi:namedview
      id="base"
-     pagecolor="#ff33ff"
+     pagecolor="#ffffff"
      bordercolor="#666666"
      borderopacity="1.0"
-     inkscape:pageopacity="0"
+     inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="68.387005"
-     inkscape:cy="66.716594"
+     inkscape:cx="9.0908281"
+     inkscape:cy="41.690939"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -34,11 +37,11 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1272"
-     inkscape:window-height="975"
+     inkscape:window-width="956"
+     inkscape:window-height="1138"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
        id="grid3001"
@@ -46,8 +49,8 @@
        visible="true"
        enabled="true"
        snapvisiblegridlinesonly="true"
-       originx="7.0625px"
-       originy="2.0753162px" />
+       originx="5px"
+       originy="-4.9999803px" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -57,7 +60,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -65,16 +68,16 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(7.0625,-862.4375)">
+     transform="translate(5,-947.3622)">
     <path
-       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:11.74876785000000012;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 50.754004,946.68871 0,-23.49753 -41.120688,41.12071 41.120688,41.12071 0,-58.74388"
+       style="fill:#ffffff;fill-opacity:1;stroke:none"
+       d="m 45,1002.3622 -45,20 45,20"
        id="path2996"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
+       sodipodi:nodetypes="ccc" />
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:11.74876785000000012;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 50.754004,964.31187 117.487676,0 0,-52.86945"
+       style="fill:none;stroke:#ffffff;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 40,1022.3622 40,0 0,-65.00002"
        id="path3768"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
