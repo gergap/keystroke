@@ -87,6 +87,8 @@ const char *key_lookup(int keycode, int shift, int altgr)
         } else if (   strcmp(symbol, "LEFTMETA") == 0
                    || strcmp(symbol, "RIGHTMETA") == 0) {
             symbol = "META";
+        } else if (strcmp(symbol, "KPENTER") == 0) {
+            symbol = "ENTER";
         }
     }
 
