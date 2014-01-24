@@ -27,46 +27,58 @@ Item {
         visible: false
 
         onTextChanged: {
+            key.width = 128;
+            key.height = 128;
             if (text === "ENTER") {
                 pic.source = "../png/enter.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "SPACE") {
                 pic.source = "../png/space.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "META") {
                 pic.source = "../png/tux_white.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "SHIFT") {
                 pic.source = "../png/shift.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "LEFT") {
                 pic.source = "../png/left.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "RIGHT") {
                 pic.source = "../png/right.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "UP") {
                 pic.source = "../png/up.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
             } else if (text === "DOWN") {
                 pic.source = "../png/down.png";
+                key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
-                key.width = 128;
+            } else if (text === "BACKSPACE") {
+                pic.source = "../png/backspace.png";
+                key.width = pic.sourceSize.width * key.width / 192;
+                pic.visible = true;
+                label.visible = false;
+            } else if (text === "TAB") {
+                pic.source = "../png/tab.png";
+                key.width = pic.sourceSize.width * key.width / 192;
+                pic.visible = true;
+                label.visible = false;
             } else {
                 pic.visible = false;
                 label.visible = true;
