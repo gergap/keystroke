@@ -5,6 +5,7 @@
 #include "qmlapplicationviewer.h"
 #include "keygrabber.h"
 #include "dialog.h"
+#include "file.h"
 
 extern "C" int qtmain(int argc, char *argv[])
 {
@@ -20,6 +21,7 @@ extern "C" int qtmain(int argc, char *argv[])
     dlg.show();
 
     qmlRegisterType<KeyGrabber>("com.gappy.keygrabber", 1, 0, "KeyGrabber");
+    qmlRegisterType<File>("com.gappy.keygrabber", 1, 0, "File");
 
     QmlApplicationViewer viewer;
     viewer.addImportPath(QLatin1String("modules"));

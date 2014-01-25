@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import com.gappy.keygrabber 1.0
 
 Item {
     id: key
@@ -13,6 +14,10 @@ Item {
         anchors.fill: parent
     }
     */
+
+    File {
+        id: file
+    }
 
     Text {
         id: label
@@ -29,58 +34,12 @@ Item {
         onTextChanged: {
             key.width = 128;
             key.height = 128;
-            if (text === "ENTER") {
-                pic.source = "../png/enter.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "SPACE") {
-                pic.source = "../png/space.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "META") {
-                pic.source = "../png/tux_white.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "SHIFT") {
-                pic.source = "../png/shift.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "LEFT") {
-                pic.source = "../png/left.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "RIGHT") {
-                pic.source = "../png/right.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "UP") {
-                pic.source = "../png/up.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "DOWN") {
-                pic.source = "../png/down.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "BACKSPACE") {
-                pic.source = "../png/backspace.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "DELETE") {
-                pic.source = "../png/delete.png";
-                key.width = pic.sourceSize.width * key.width / 192;
-                pic.visible = true;
-                label.visible = false;
-            } else if (text === "TAB") {
-                pic.source = "../png/tab.png";
+            var filename = "qrc:/png/" + text.toLowerCase() + ".png";
+            var b = file.exists(filename);
+            //console.log(filename + ": " + b);
+
+            if (b) {
+                pic.source = filename;
                 key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;

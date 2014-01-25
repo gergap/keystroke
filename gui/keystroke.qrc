@@ -1,5 +1,17 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource prefix="/">
 <file>png/icon.png</file>
+<file>png/backspace.png</file>
+<file>png/delete.png</file>
+<file>png/down.png</file>
+<file>png/enter.png</file>
+<file>png/icon.png</file>
+<file>png/left.png</file>
+<file>png/right.png</file>
+<file>png/shift.png</file>
+<file>png/space.png</file>
+<file>png/tab.png</file>
+<file>png/meta.png</file>
+<file>png/up.png</file>
 </qresource>
 </RCC>
