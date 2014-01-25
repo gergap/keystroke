@@ -74,6 +74,11 @@ Item {
                 key.width = pic.sourceSize.width * key.width / 192;
                 pic.visible = true;
                 label.visible = false;
+            } else if (text === "DELETE") {
+                pic.source = "../png/delete.png";
+                key.width = pic.sourceSize.width * key.width / 192;
+                pic.visible = true;
+                label.visible = false;
             } else if (text === "TAB") {
                 pic.source = "../png/tab.png";
                 key.width = pic.sourceSize.width * key.width / 192;
