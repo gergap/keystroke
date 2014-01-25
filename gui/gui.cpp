@@ -18,7 +18,7 @@ extern "C" int qtmain(int argc, char *argv[])
     int ret;
     Dialog dlg;
 
-    dlg.show();
+//    dlg.show();
 
     qmlRegisterType<KeyGrabber>("com.gappy.keygrabber", 1, 0, "KeyGrabber");
     qmlRegisterType<File>("com.gappy.keygrabber", 1, 0, "File");
@@ -33,10 +33,10 @@ extern "C" int qtmain(int argc, char *argv[])
     viewer.setAttribute(Qt::WA_TranslucentBackground);
     viewer.setStyleSheet("background:transparent;");
     // no window decorations
-    viewer.setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+    viewer.setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool);
     viewer.resize(width, height);
     viewer.move(0, r.height() - height);
-    viewer.show();
+//    viewer.show();
 
     ret = app.exec();
 
