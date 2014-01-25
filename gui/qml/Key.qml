@@ -54,7 +54,6 @@ Item {
     Image {
         id: pic
         fillMode: Image.PreserveAspectFit
-        source: "../png/enter.png"
         anchors.fill: parent
         visible: false
         smooth: true
