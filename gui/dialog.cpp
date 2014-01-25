@@ -58,6 +58,6 @@ void Dialog::createTrayIcon()
     qDebug() << "create tray icon";
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setIcon(QIcon(":png/icon.png"));
+    trayIcon->setIcon(QIcon(":/png/icon.png"));
 }
 
