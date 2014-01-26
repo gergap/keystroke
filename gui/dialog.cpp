@@ -1,9 +1,21 @@
 #include "dialog.h"
+#include "settings.h"
 #include <QtGui>
 
 Dialog::Dialog() : QDialog()
 {
     ui.setupUi(this);
+
+    settings = Settings::instance();
+    ui.spinBoxFadeoutTime->setValue(settings->fadeoutTime() / 1000.0);
+    ui.spinBoxFontSize->setValue(settings->fontSize());
+    ui.spinBoxDockSize->setValue(settings->dockWidth());
+    connect(ui.spinBoxFadeoutTime, SIGNAL(valueChanged(double)), this, SLOT(fadeoutTimeChanged(double)));
+    connect(ui.sliderFadeoutTime, SIGNAL(valueChanged(int)), this, SLOT(fadeoutTimeChanged(int)));
+
+    connect(ui.btnOk, SIGNAL(clicked()), this, SLOT(okPressed()));
+    connect(ui.btnApply, SIGNAL(clicked()), this, SLOT(applyPressed()));
+    connect(ui.btnCancel, SIGNAL(clicked()), this, SLOT(cancelPressed()));
 
     if (QSystemTrayIcon::isSystemTrayAvailable())
         qDebug() << "Systemtray is available.";
@@ -59,5 +71,38 @@ void Dialog::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->setIcon(QIcon(":/png/icon.png"));
+}
+
+void Dialog::applyPressed()
+{
+    saveSettings();
+}
+
+void Dialog::okPressed()
+{
+    saveSettings();
+    hide();
+}
+
+void Dialog::cancelPressed()
+{
+    hide();
+}
+
+void Dialog::saveSettings()
+{
+    settings->setFadeoutTime(ui.spinBoxFadeoutTime->value() * 1000);
+    settings->setFontSize(ui.spinBoxFontSize->value());
+    settings->setDockWidth(ui.spinBoxDockSize->value());
+}
+
+void Dialog::fadeoutTimeChanged(int value)
+{
+    ui.spinBoxFadeoutTime->setValue(value / 1000.0);
+}
+
+void Dialog::fadeoutTimeChanged(double value)
+{
+    ui.sliderFadeoutTime->setValue(value * 1000);
 }
 

@@ -54,7 +54,7 @@ Item {
 
     Timer {
         id: timer
-        interval: 1500; running: false; repeat: false
+        interval: settings.fadeoutTime; running: false; repeat: false
         onTriggered: {
             var i;
             for (i=0; i<repeater.count; i++) {

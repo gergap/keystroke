@@ -5,6 +5,8 @@
 #include <QSystemTrayIcon>
 #include "ui_dialog.h"
 
+class Settings;
+
 class Dialog : public QDialog
 {
     Q_OBJECT
@@ -16,16 +18,23 @@ protected:
 
 private slots:
     void iconActivated(QSystemTrayIcon::ActivationReason reason);
+    void applyPressed();
+    void okPressed();
+    void cancelPressed();
+    void fadeoutTimeChanged(int value);
+    void fadeoutTimeChanged(double value);
 
 private:
     void createActions();
     void createTrayIcon();
+    void saveSettings();
 
     QAction *minimizeAction;
     QAction *maximizeAction;
     QAction *restoreAction;
     QAction *quitAction;
 
+    Settings *settings;
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
     Ui_Dialog ui;

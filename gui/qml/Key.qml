@@ -26,7 +26,7 @@ Item {
         text: "Key"
         smooth: true
         style: Text.Raised
-        font.pointSize: 100
+        font.pointSize: settings.fontSize
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         visible: false

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>337</width>
-    <height>181</height>
+    <height>184</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="btnShortcut">
        <property name="text">
         <string>Meta-F10</string>
        </property>
@@ -38,14 +38,20 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QSlider" name="horizontalSlider">
+      <widget class="QSlider" name="sliderFadeoutTime">
+       <property name="minimum">
+        <number>100</number>
+       </property>
+       <property name="maximum">
+        <number>30000</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QDoubleSpinBox" name="spinBoxTime">
+      <widget class="QDoubleSpinBox" name="spinBoxFadeoutTime">
        <property name="minimum">
         <double>0.100000000000000</double>
        </property>
@@ -72,14 +78,17 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QSlider" name="horizontalSlider_2">
+      <widget class="QSlider" name="sliderFontSize">
+       <property name="maximum">
+        <number>200</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QSpinBox" name="spinBoxFontsize">
+      <widget class="QSpinBox" name="spinBoxFontSize">
        <property name="maximum">
         <number>200</number>
        </property>
@@ -103,7 +112,10 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QSlider" name="horizontalSlider_3">
+      <widget class="QSlider" name="sliderDockSize">
+       <property name="maximum">
+        <number>800</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -157,9 +169,23 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="btnOk">
        <property name="text">
-        <string>Close</string>
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnApply">
+       <property name="text">
+        <string>Apply</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCancel">
+       <property name="text">
+        <string>Cancel</string>
        </property>
       </widget>
      </item>
@@ -168,5 +194,70 @@
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>sliderFontSize</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>spinBoxFontSize</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>166</x>
+     <y>78</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>76</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderDockSize</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>spinBoxDockSize</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>186</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>222</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxDockSize</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderDockSize</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>226</x>
+     <y>106</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxFontSize</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderFontSize</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>89</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>187</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
