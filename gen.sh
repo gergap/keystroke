@@ -3,7 +3,8 @@
 FILE=keys.h
 
 # create translation table based on /usr/include/linux/input.h
-echo "/* generated from /usr/include/linux/input.h by gen.sh" > $FILE
+cp file-header.h $FILE
+echo "/* generated from /usr/include/linux/input.h by gen.sh" >> $FILE
 echo "/* Don't modifiy this file!" >> $FILE
 echo " */" >> $FILE
 echo "#ifndef _KEYS_H_" >> $FILE
