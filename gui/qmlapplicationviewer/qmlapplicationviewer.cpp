@@ -176,6 +176,21 @@ void QmlApplicationViewer::showExpanded()
 #endif
 }
 
+void QmlApplicationViewer::dockWidthChanged(int newVal)
+{
+    resize(newVal, height());
+}
+
+void QmlApplicationViewer::dockHeightChanged(int newVal)
+{
+    resize(width(), newVal);
+}
+
+void QmlApplicationViewer::dockPositionChanged(const QPoint &newVal)
+{
+    move(newVal);
+}
+
 QApplication *createApplication(int &argc, char **argv)
 {
 #ifdef HARMATTAN_BOOSTER

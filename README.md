@@ -13,7 +13,6 @@ might be useful for somebody and to get some feedback.
 
 Things that are missing at the moment:
 
-* a working config dialog (in progress)
 * more options for keyboard translations:
     * Mode 1) SHIFT+A -> A
     * Mode 2) SHIFT+A -> SHIFT + a, CTRL-C -> CTRL-C

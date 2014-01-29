@@ -28,12 +28,12 @@ extern "C" int qtmain(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     int ret;
-    Dialog dlg;
-    Settings *s = Settings::instance();
 
     app.setApplicationName("KeyStroke");
     app.setOrganizationName("Gappy");
 
+    Dialog dlg;
+    Settings *s = Settings::instance();
 //    dlg.show();
 
     qmlRegisterType<KeyGrabber>("com.gappy.keygrabber", 1, 0, "KeyGrabber");
@@ -58,7 +58,13 @@ extern "C" int qtmain(int argc, char *argv[])
     qDebug() << s->dockPosition();
 //    viewer.show();
 
+    QObject::connect(s, SIGNAL(dockWidthChanged(int)), &viewer, SLOT(dockWidthChanged(int)));
+    QObject::connect(s, SIGNAL(dockHeightChanged(int)), &viewer, SLOT(dockHeightChanged(int)));
+    QObject::connect(s, SIGNAL(dockPositionChanged(const QPoint&)), &viewer, SLOT(dockPositionChanged(const QPoint&)));
+
     ret = app.exec();
+
+    delete s;
 
     return ret;
 }

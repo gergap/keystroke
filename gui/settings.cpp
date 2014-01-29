@@ -100,6 +100,12 @@ void Settings::setDockHeight(int val)
     if (val != m_dockHeight) {
         m_dockHeight = val;
         emit dockHeightChanged(val);
+
+        QDesktopWidget desktop;
+        int primary = desktop.primaryScreen();
+        QRect r = desktop.screenGeometry(primary);
+        QPoint pos(0, r.height() - m_dockHeight);
+        setDockPosition(pos);
     }
 }
 

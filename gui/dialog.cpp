@@ -27,7 +27,7 @@ Dialog::Dialog() : QDialog()
     settings = Settings::instance();
     ui.spinBoxFadeoutTime->setValue(settings->fadeoutTime() / 1000.0);
     ui.spinBoxFontSize->setValue(settings->fontSize());
-    ui.spinBoxDockSize->setValue(settings->dockWidth());
+    ui.spinBoxDockSize->setValue(settings->dockHeight());
     connect(ui.spinBoxFadeoutTime, SIGNAL(valueChanged(double)), this, SLOT(fadeoutTimeChanged(double)));
     connect(ui.sliderFadeoutTime, SIGNAL(valueChanged(int)), this, SLOT(fadeoutTimeChanged(int)));
 
@@ -111,7 +111,7 @@ void Dialog::saveSettings()
 {
     settings->setFadeoutTime(ui.spinBoxFadeoutTime->value() * 1000);
     settings->setFontSize(ui.spinBoxFontSize->value());
-    settings->setDockWidth(ui.spinBoxDockSize->value());
+    settings->setDockHeight(ui.spinBoxDockSize->value());
 }
 
 void Dialog::fadeoutTimeChanged(int value)

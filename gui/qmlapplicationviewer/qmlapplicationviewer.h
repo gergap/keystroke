@@ -46,6 +46,11 @@ public:
 
     void showExpanded();
 
+public slots:
+    void dockWidthChanged(int newVal);
+    void dockHeightChanged(int newVal);
+    void dockPositionChanged(const QPoint &newVal);
+
 private:
     class QmlApplicationViewerPrivate *d;
 };
