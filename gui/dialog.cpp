@@ -38,7 +38,7 @@ Dialog::Dialog() : QDialog()
     if (QSystemTrayIcon::isSystemTrayAvailable())
         qDebug() << "Systemtray is available.";
     else
-        qDebug() << "Systemtray is available.";
+        qDebug() << "Systemtray is not available.";
     createActions();
     createTrayIcon();
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
