@@ -18,7 +18,7 @@
 
 
 /* generated from /usr/include/linux/input.h by gen.sh
-/* Don't modifiy this file!
+ * Don't modifiy this file!
  */
 #ifndef _KEYS_H_
 #define _KEYS_H_

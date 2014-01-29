@@ -1,6 +1,8 @@
 project(keystroke C)
 cmake_minimum_required(VERSION 2.8)
 
+add_definitions(-Wall)
+
 add_executable(keystroke main.c keymap.c)
 
 add_subdirectory(gui)

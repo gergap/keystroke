@@ -26,6 +26,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
+#ifdef GUI
+# include "gui/gui.h"
+#endif
 
 volatile int stop = 0;
 int keyboard_fd = 0;
@@ -47,12 +50,14 @@ void die(const char *fmt, ...)
 /* event codes are described in /usr/src/linux/Documentation/input/event-codes.txt */
 int main(int argc, char const *argv[])
 {
-    struct input_event ev;
     char device[] = KBD_DEVICE;
     int ret;
+#ifndef GUI
+    struct input_event ev;
     int shift = 0;
     int altgr = 0;
     const char *symbol;
+#endif
 
     if (getuid() == 0) {
         printf("WARNING: running as root!\nIt's recommended to start this application "

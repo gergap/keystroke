@@ -17,6 +17,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include "keys.h"
 
 #define SYM_MAX_LEN 16

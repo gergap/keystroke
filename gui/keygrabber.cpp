@@ -46,7 +46,7 @@ void KeyGrabber::run()
         ret = read(keyboard_fd, &ev, sizeof(ev));
         if (ret == -1 && errno == EINTR)
             continue;
-        if (ret < sizeof(ev)) {
+        if (ret != sizeof(ev)) {
             qDebug() << "read returned invalid size\n";
             break;
         }
