@@ -22,8 +22,8 @@ sudo make install
 
 Note: The install step makes the executable owned by root and sets the SETUID
 bit. This is necessary, because the applications needs root privileges to open
-the keyboard device.  After the device was opened it drops this root privileges
-for secure reasons.
+the keyboard device. After the device was opened it drops this root privileges
+for security reasons.
 
 There is also a convenience build script build.sh which executes the steps above
 for you.
