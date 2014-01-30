@@ -9,9 +9,10 @@ BUILD_TYPE=Release
 # developer prefix for testing
 PREFIX=../dist
 BUILD_TYPE=Debug
+BLD_DIR=bld
 
-mkdir -p bld
-cd bld || exit 1
+mkdir -p $BLD_DIR
+cd $BLD_DIR || exit 1
 cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE=$BUILD_TYPE .. || exit 1
 make || exit 1
 # you will require sudo to make the application root owned with setuid bit set

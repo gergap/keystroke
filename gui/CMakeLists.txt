@@ -17,7 +17,13 @@ add_executable(keystroke-gui ${KEYSTROKE_MOC} ${KEYSTROKE_RCC_SRCS} ${KEYSTROKE_
     ../main.c ../keymap.c
     gui.cpp keygrabber.cpp dialog.cpp file.cpp settings.cpp
     qmlapplicationviewer/qmlapplicationviewer.cpp)
-target_link_libraries(keystroke-gui ${QT_LIBRARIES})
+target_link_libraries(keystroke-gui ${QT_LIBRARIES} stdc++)
+
+if ("${CMAKE_CXX_COMPILER}" STREQUAL "/usr/bin/ccc-analyzer")
+    # for any reason my ccc-analyzer doesn't link against libstdc++.so
+    # so we specify it manually to avoid linker errors
+    target_link_libraries(keystroke-gui stdc++)
+endif()
 
 install(TARGETS keystroke-gui
     DESTINATION bin
