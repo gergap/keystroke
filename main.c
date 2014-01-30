@@ -17,6 +17,7 @@
  */
 
 #include <linux/input.h>
+#include <linux/limits.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,6 +27,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <string.h>
 #ifdef GUI
 # include "gui/gui.h"
 #endif
@@ -33,6 +35,11 @@
 volatile int stop = 0;
 int keyboard_fd = 0;
 
+/* uncomment the following file to enable same developer test code */
+/*#define TEST*/
+/* the default keyboard device file. This is a symlink to one of the
+ * /dev/input/eventX files.
+ */
 #define KBD_DEVICE "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
 
 #include "keymap.h"
@@ -50,7 +57,7 @@ void die(const char *fmt, ...)
 /* event codes are described in /usr/src/linux/Documentation/input/event-codes.txt */
 int main(int argc, char const *argv[])
 {
-    char device[] = KBD_DEVICE;
+    char device[PATH_MAX] = KBD_DEVICE;
     int ret;
 #ifndef GUI
     struct input_event ev;
@@ -63,6 +70,25 @@ int main(int argc, char const *argv[])
         printf("WARNING: running as root!\nIt's recommended to start this application "
                "as normal user, owned be root with setuid bit set (rwsr-xr-x).\n");
     }
+
+#ifdef TEST
+    /* I don't want to allow overriding the device path in release mode,
+     * because we are still running as root at this point and bad things might
+     * happen, if users can start this app with root privileges (setuid bit)
+     * and can open abitrary file as device.
+     * So currently I use this option only to test things as non-root, which is
+     * not allowed to open the keyboard device file.
+     */
+    if (argc > 1) {
+        int len = strlen(argv[1]);
+        if (len > sizeof(device) - 1) {
+            die("The given path was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+        }
+        /* we know already the length, so we use memcpy instead of strncpy which has various problems */
+        memcpy(device, argv[1], len);
+        device[len] = 0;
+    }
+#endif
 
     /* the 1st thing we do is opening the keyboard device,
      * note that you will need root privileges for that */
