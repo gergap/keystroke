@@ -1,5 +1,8 @@
 #!/bin/sh
 # This is just a convenience script to build and install using cmake.
+# Usage:
+# Default build: ./build.sh
+# Developer build: ./build.sh dev
 
 # default installation prefix when compiling from source
 PREFIX=/usr/local
@@ -7,9 +10,15 @@ BUILD_TYPE=Release
 # alternate prefix when installing in main system
 #PREFIX=/usr
 # developer prefix for testing
-PREFIX=../dist
-BUILD_TYPE=Debug
+if [ $# -gt 0 ] && [ "$1" == "dev" ]; then
+    PREFIX=$PWD/dist
+    BUILD_TYPE=Debug
+fi
 BLD_DIR=bld
+
+echo "Building in $BUILD_TYPE mode, install location is $PREFIX."
+echo "Press Enter to continue."
+read
 
 mkdir -p $BLD_DIR
 cd $BLD_DIR || exit 1
