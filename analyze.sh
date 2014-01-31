@@ -1,8 +1,8 @@
 #!/bin/sh
-# This is just a convenience script to build and install using cmake.
+# This script perform a static code analysis using ccc-analyzer
 
 # developer prefix for testing
-PREFIX=../dist
+PREFIX=$PWD/dist
 BUILD_TYPE=Debug
 BLD_DIR=bldAnalysis
 # use clang static analyzer
