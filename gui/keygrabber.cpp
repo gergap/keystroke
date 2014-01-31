@@ -29,6 +29,7 @@ KeyGrabber::KeyGrabber(QObject *parent) :
     QThread(parent)
 {
     m_bShutdown = false;
+    m_bEnabled = true;
 
     // marshal internal signal from worker thread to main thread using a queued connection
     connect(this, SIGNAL(keyPressed_Internal(QString)), this, SIGNAL(keyPressed(QString)), Qt::QueuedConnection);
@@ -40,6 +41,7 @@ void KeyGrabber::run()
     int ret;
     int shift = 0;
     int altgr = 0;
+    int meta = 0;
     const char *symbol = 0;
 
     while (!m_bShutdown) {
@@ -65,6 +67,12 @@ void KeyGrabber::run()
                 case KEY_RIGHTSHIFT:
                     shift &= (~2);
                     break;
+                case KEY_LEFTMETA:
+                    meta &= (~1);
+                    break;
+                case KEY_RIGHTMETA:
+                    meta &= (~2);
+                    break;
                 case KEY_RIGHTALT:
                     altgr = 0;
                     break;
@@ -82,6 +90,16 @@ void KeyGrabber::run()
                 case KEY_RIGHTALT:
                     altgr = 1;
                     break;
+                case KEY_LEFTMETA:
+                    meta |= 1;
+                    break;
+                case KEY_RIGHTMETA:
+                    meta |= 2;
+                    break;
+                case KEY_F10:
+                    if (meta)
+                        m_bEnabled = !m_bEnabled;
+                    break;
                 default:
                     symbol = key_lookup(ev.code, shift, altgr);
                     printf("pressed %s (%i), shift=%i, altgr=%i\n", symbol, ev.code, shift, altgr);
@@ -94,8 +112,10 @@ void KeyGrabber::run()
         }
 
         if (symbol) {
-            QString key = QString::fromUtf8(symbol);
-            emit keyPressed_Internal(key);
+            if (m_bEnabled) {
+                QString key = QString::fromUtf8(symbol);
+                emit keyPressed_Internal(key);
+            }
             symbol = 0;
         }
     }

@@ -30,12 +30,16 @@ public:
     virtual void run();
     void stop();
 
+    bool enabled() const { return m_bEnabled; }
+    void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; }
+
 signals:
     void keyPressed(const QString &key);
     void keyPressed_Internal(const QString &key);
 
 private:
     bool m_bShutdown;
+    bool m_bEnabled;
 };
 
 #endif /* end of include guard: KEYGRABBER_H */
