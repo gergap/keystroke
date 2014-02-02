@@ -14,8 +14,8 @@ might be useful for somebody and to get some feedback.
 Things that are missing at the moment:
 
 * more intelligent key display
-    * what should by displayed as key-combination and what as a composed key: SHIFt + a = A, CTRL  + c = CTRL-C
-    * enable backspace key: this by pressing backspace the previous typed key can be removed
+    * what should be displayed as key-combination and what as a composed key: SHIFt + a = A, CTRL  + c = CTRL-C
+    * enable backspace key: this way by pressing backspace the previous typed key will be removed
       instead of simply displaying the backspace symbol
 * add keyboard device selection to GUI
 * add mouse display. It's named keystroke, but showing mouse buttons is even
