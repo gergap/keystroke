@@ -126,3 +126,6 @@ install(TARGETS keystroke
                 SETUID)
 #}}}
 
+# VIM modeline
+# vim:ts=4:sw=4:expandtab:tw=120:fdm=marker
+
