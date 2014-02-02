@@ -84,6 +84,7 @@ void KeyGrabber::run()
                 switch (ev.code) {
                 case KEY_LEFTSHIFT:
                     shift |= 1;
+                    break;
                 case KEY_RIGHTSHIFT:
                     shift |= 2;
                     break;
@@ -101,10 +102,10 @@ void KeyGrabber::run()
                         m_bEnabled = !m_bEnabled;
                     break;
                 default:
-                    symbol = key_lookup(ev.code, shift, altgr);
-                    printf("pressed %s (%i), shift=%i, altgr=%i\n", symbol, ev.code, shift, altgr);
                     break;
                 }
+                symbol = key_lookup(ev.code, shift, altgr);
+                printf("pressed %s (%i), shift=%i, altgr=%i\n", symbol, ev.code, shift, altgr);
                 break;
             case KEY_REPEATED:
                 break;
