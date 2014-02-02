@@ -41,15 +41,15 @@ private slots:
     void cancelPressed();
     void fadeoutTimeChanged(int value);
     void fadeoutTimeChanged(double value);
+    void showAbout();
 
 private:
     void createActions();
     void createTrayIcon();
     void saveSettings();
 
-    QAction *minimizeAction;
-    QAction *maximizeAction;
-    QAction *restoreAction;
+    QAction *configureAction;
+    QAction *aboutAction;
     QAction *quitAction;
 
     Settings *settings;

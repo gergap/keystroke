@@ -16,18 +16,21 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KEYSTROKE_GUI
-#define KEYSTROKE_GUI
+#ifndef ABOUTDIALOG_H
+#define ABOUTDIALOG_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include <QDialog>
+#include "ui_about.h"
 
-    int qtmain(int argc, char *argv[]);
+class AboutDialog : public QDialog
+{
+    Q_OBJECT
+public:
+    AboutDialog(QWidget *parent = 0);
 
-#ifdef __cplusplus
-}
-#endif
+private:
+    Ui_AboutDialog ui;
+};
 
-#endif /* end of include guard:  */
+#endif /* end of include guard: ABOUTDIALOG_H */
 

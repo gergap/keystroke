@@ -28,15 +28,15 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <string.h>
+#include <getopt.h>
 #ifdef GUI
 # include "gui/gui.h"
 #endif
+#include "config.h"
 
 volatile int stop = 0;
 int keyboard_fd = 0;
 
-/* uncomment the following file to enable same developer test code */
-/*#define TEST*/
 /* the default keyboard device file. This is a symlink to one of the
  * /dev/input/eventX files.
  */
@@ -47,18 +47,41 @@ int keyboard_fd = 0;
 void die(const char *fmt, ...)
 {
     va_list ap;
+    int error = errno;
+    const char *errmsg = strerror(error);
 
+    fprintf(stderr, "Error: %s (%i)\n", errmsg, error);
     va_start(ap, fmt);
     vfprintf(stderr, fmt, ap);
     va_end(ap);
     exit(1);
 }
 
+void versioninfo()
+{
+    printf("%s %s\n%s\n", PROGRAM_NAME, VERSION, COPYRIGHT);
+    printf("License: %s\n", LICENSE);
+}
+
+void usage(const char *app)
+{
+    versioninfo();
+    fprintf(stderr, "Usage: %s [-h] [-v] [-d <device>] [-l <layout>]\n", app);
+    fprintf(stderr, "-h : show this help\n");
+    fprintf(stderr, "-v : show version info\n");
+    fprintf(stderr, "-d : configure keyboard device\n");
+    fprintf(stderr, "-l : configure keyboard layout\n");
+    exit(1);
+}
+
 /* event codes are described in /usr/src/linux/Documentation/input/event-codes.txt */
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
     char device[PATH_MAX] = KBD_DEVICE;
+    char layout[PATH_MAX] = "de.map";
     int ret;
+    int len;
+    int opt;
 #ifndef GUI
     struct input_event ev;
     int shift = 0;
@@ -71,24 +94,34 @@ int main(int argc, char const *argv[])
                "as normal user, owned be root with setuid bit set (rwsr-xr-x).\n");
     }
 
-#ifdef TEST
-    /* I don't want to allow overriding the device path in release mode,
-     * because we are still running as root at this point and bad things might
-     * happen, if users can start this app with root privileges (setuid bit)
-     * and can open abitrary file as device.
-     * So currently I use this option only to test things as non-root, which is
-     * not allowed to open the keyboard device file.
-     */
-    if (argc > 1) {
-        int len = strlen(argv[1]);
-        if (len > sizeof(device) - 1) {
-            die("The given path was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+    while ((opt = getopt(argc, argv, "vhld:")) != -1) {
+        switch (opt) {
+        case 'v':
+            versioninfo();
+            exit(EXIT_SUCCESS);
+            break;
+        case 'l':
+            len = strlen(optarg);
+            if (len > sizeof(layout) - 1) {
+                die("The given path was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+            }
+            /* we know already the length, so we use memcpy instead of strncpy which has various problems */
+            memcpy(layout, optarg, len);
+            layout[len] = 0;
+            break;
+        case 'd':
+            len = strlen(optarg);
+            if (len > sizeof(device) - 1) {
+                die("The given path was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+            }
+            /* we know already the length, so we use memcpy instead of strncpy which has various problems */
+            memcpy(device, optarg, len);
+            device[len] = 0;
+            break;
+        default: /* '?' */
+            usage(argv[0]);
         }
-        /* we know already the length, so we use memcpy instead of strncpy which has various problems */
-        memcpy(device, argv[1], len);
-        device[len] = 0;
     }
-#endif
 
     /* the 1st thing we do is opening the keyboard device,
      * note that you will need root privileges for that */
@@ -104,7 +137,7 @@ int main(int argc, char const *argv[])
         printf("Root privileges have been dropped. Running as normal user now.\n");
     }
 
-    loadmap("de.map");
+    loadmap(layout);
     //printmap();
 
 #ifdef GUI

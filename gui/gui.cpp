@@ -29,6 +29,7 @@ extern "C" int qtmain(int argc, char *argv[])
     QApplication app(argc, argv);
     int ret;
 
+    app.setQuitOnLastWindowClosed(false);
     app.setApplicationName("KeyStroke");
     app.setOrganizationName("Gappy");
 

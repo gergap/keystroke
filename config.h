@@ -16,18 +16,15 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef KEYSTROKE_GUI
-#define KEYSTROKE_GUI
+#ifndef __CONFIG_H__
+#define __CONFIG_H__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#define PROGRAM_NAME "Keystroke"
+#define VERSION      "0.0.1"
+#define COPYRIGHT    "Copyright (C) 2014 Gerhard Gappmeier <gappy1502@gmx.net>"
+#define LICENSE      "GNU GENERAL PUBLIC LICENSE Version 3"
 
-    int qtmain(int argc, char *argv[]);
+#endif /* __CONFIG_H__ */
 
-#ifdef __cplusplus
-}
-#endif
 
-#endif /* end of include guard:  */
 
