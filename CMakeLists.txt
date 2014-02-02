@@ -5,7 +5,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 #{{{ Program configuration options
 ################################################################################
 set(PROGRAM_NAME "Keystroke")
-set(VERSION "0.0.1" CACHE STRING "Version number.")
+set(VERSION "0.0.2" CACHE STRING "Version number.")
 set(VERSION_SUFFIX "" CACHE STRING "You can add version suffixes like Beta, Snapshot here.")
 option(BUILD_SHARED_LIBS    "Build libraries as shared libraries"       ON)
 # don't change code below this line
