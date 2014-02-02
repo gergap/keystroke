@@ -18,6 +18,8 @@
 
 #include "dialog.h"
 #include "settings.h"
+#include "aboutdialog.h"
+#include "../config.h"
 #include <QtGui>
 
 Dialog::Dialog() : QDialog()
@@ -63,14 +65,11 @@ void Dialog::iconActivated(QSystemTrayIcon::ActivationReason reason)
 
 void Dialog::createActions()
 {
-    minimizeAction = new QAction(tr("Mi&nimize"), this);
-    connect(minimizeAction, SIGNAL(triggered()), this, SLOT(hide()));
+    configureAction = new QAction(tr("&Configuration..."), this);
+    connect(configureAction, SIGNAL(triggered()), this, SLOT(show()));
 
-    maximizeAction = new QAction(tr("Ma&ximize"), this);
-    connect(maximizeAction, SIGNAL(triggered()), this, SLOT(showMaximized()));
-
-    restoreAction = new QAction(tr("&Restore"), this);
-    connect(restoreAction, SIGNAL(triggered()), this, SLOT(showNormal()));
+    aboutAction = new QAction(tr("&About..."), this);
+    connect(aboutAction, SIGNAL(triggered()), this, SLOT(showAbout()));
 
     quitAction = new QAction(tr("&Quit"), this);
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -79,9 +78,8 @@ void Dialog::createActions()
 void Dialog::createTrayIcon()
 {
     trayIconMenu = new QMenu(this);
-    trayIconMenu->addAction(minimizeAction);
-    trayIconMenu->addAction(maximizeAction);
-    trayIconMenu->addAction(restoreAction);
+    trayIconMenu->addAction(configureAction);
+    trayIconMenu->addAction(aboutAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 
@@ -122,5 +120,15 @@ void Dialog::fadeoutTimeChanged(int value)
 void Dialog::fadeoutTimeChanged(double value)
 {
     ui.sliderFadeoutTime->setValue(value * 1000);
+}
+
+void Dialog::showAbout()
+{
+    AboutDialog dlg;
+
+    dlg.exec();
+    /*QString title = tr("About %1").arg(PROGRAM_NAME);
+    QString message = tr("<b>%1</b>\nVersion: %2\n%3").arg(PROGRAM_NAME).arg(VERSION).arg(COPYRIGHT);
+    QMessageBox::about(this, title, message);*/
 }
 
