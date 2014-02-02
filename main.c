@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
                "as normal user, owned be root with setuid bit set (rwsr-xr-x).\n");
     }
 
-    while ((opt = getopt(argc, argv, "vhld:")) != -1) {
+    while ((opt = getopt(argc, argv, "vhl:d:")) != -1) {
         switch (opt) {
         case 'v':
             versioninfo();
