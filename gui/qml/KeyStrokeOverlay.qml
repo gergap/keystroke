@@ -30,8 +30,8 @@ Item {
     }
 
     Rectangle {
-        color: "#000000"
-        opacity: 0.4
+        color: settings.backgroundColor
+        opacity: settings.backgroundOpacity
         anchors.fill: parent
     }
 

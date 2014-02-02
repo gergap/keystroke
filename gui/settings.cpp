@@ -38,6 +38,9 @@ Settings::Settings(QObject *parent)
     m_dockWidth = s.value("dockWidth", defaultDockWidth).toInt();
     m_dockHeight = s.value("dockHeight", defaultDockHeight).toInt();
     m_dockPos = s.value("dockPos", QPoint(0, r.height() - m_dockHeight)).toPoint();
+    m_bgcolor = s.value("backgroundColor", Qt::black).value<QColor>();
+    m_bgopacity = s.value("backgroundOpacity", 0.4).toDouble();
+    m_bBackspaceEnabled = s.value("backspaceEnabled", false).toBool();
 }
 
 Settings::~Settings()
@@ -49,6 +52,9 @@ Settings::~Settings()
     s.setValue("dockWidth", m_dockWidth);
     s.setValue("dockHeight", m_dockHeight);
     s.setValue("dockPos", m_dockPos);
+    s.setValue("backgroundColor", m_bgcolor);
+    s.setValue("backgroundOpacity", m_bgopacity);
+    s.setValue("backspaceEnabled", m_bBackspaceEnabled);
 }
 
 int Settings::fontSize() const
@@ -127,5 +133,44 @@ Settings *Settings::instance()
     if (m_instance == 0)
         m_instance = new Settings(qApp);
     return m_instance;
+}
+
+QColor Settings::backgroundColor() const
+{
+    return m_bgcolor;
+}
+
+void Settings::setBackgroundColor(const QColor &col)
+{
+    if (col != m_bgcolor) {
+        m_bgcolor = col;
+        emit backgroundColorChanged(col);
+    }
+}
+
+double Settings::backgroundOpacity() const
+{
+    return m_bgopacity;
+}
+
+void Settings::setBackgroundOpacity(double opacity)
+{
+    if (opacity != m_bgopacity) {
+        m_bgopacity = opacity;
+        emit backgroundOpacityChanged(opacity);
+    }
+}
+
+bool Settings::backspaceEnabled() const
+{
+    return m_bBackspaceEnabled;
+}
+
+void Settings::setBackspaceEnabled(bool enabled)
+{
+    if (enabled != m_bBackspaceEnabled) {
+        m_bBackspaceEnabled = enabled;
+        emit backspaceEnabledChanged(enabled);
+    }
 }
 

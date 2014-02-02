@@ -30,6 +30,11 @@ class Dialog : public QDialog
     Q_OBJECT
 public:
     Dialog();
+    enum ColorUpdateType
+    {
+        UpdateLineEdit = 0,
+        NoUpdateLineEdit
+    };
 
 protected:
     void closeEvent(QCloseEvent *e);
@@ -41,12 +46,18 @@ private slots:
     void cancelPressed();
     void fadeoutTimeChanged(int value);
     void fadeoutTimeChanged(double value);
+    void changeShortcut();
+    void selectColor();
+    void backgroundColorChanged(const QString &sColor);
     void showAbout();
 
 private:
     void createActions();
     void createTrayIcon();
+    void loadSettings();
     void saveSettings();
+    void setBackgroundColor(const QColor &col, ColorUpdateType update = UpdateLineEdit);
+    QColor parseColorString(const QString &col);
 
     QAction *configureAction;
     QAction *aboutAction;

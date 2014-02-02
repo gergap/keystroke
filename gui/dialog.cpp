@@ -26,15 +26,16 @@ Dialog::Dialog() : QDialog()
     ui.setupUi(this);
 
     settings = Settings::instance();
-    ui.spinBoxFadeoutTime->setValue(settings->fadeoutTime() / 1000.0);
-    ui.spinBoxFontSize->setValue(settings->fontSize());
-    ui.spinBoxDockSize->setValue(settings->dockHeight());
     connect(ui.spinBoxFadeoutTime, SIGNAL(valueChanged(double)), this, SLOT(fadeoutTimeChanged(double)));
     connect(ui.sliderFadeoutTime, SIGNAL(valueChanged(int)), this, SLOT(fadeoutTimeChanged(int)));
-
     connect(ui.btnOk, SIGNAL(clicked()), this, SLOT(okPressed()));
     connect(ui.btnApply, SIGNAL(clicked()), this, SLOT(applyPressed()));
     connect(ui.btnCancel, SIGNAL(clicked()), this, SLOT(cancelPressed()));
+    connect(ui.btnShortcut, SIGNAL(clicked()), this, SLOT(changeShortcut()));
+    connect(ui.btnSelectColor, SIGNAL(clicked()), this, SLOT(selectColor()));
+    connect(ui.lineEditColor, SIGNAL(textChanged(QString)), this, SLOT(backgroundColorChanged(QString)));
+
+    loadSettings();
 
     if (QSystemTrayIcon::isSystemTrayAvailable())
         qDebug() << "Systemtray is available.";
@@ -60,6 +61,9 @@ void Dialog::closeEvent(QCloseEvent *e)
 
 void Dialog::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
+    qDebug() << "iconActivated";
+    if (reason == QSystemTrayIcon::DoubleClick)
+        show();
 }
 
 void Dialog::createActions()
@@ -104,11 +108,56 @@ void Dialog::cancelPressed()
     hide();
 }
 
+void Dialog::loadSettings()
+{
+    ui.spinBoxFadeoutTime->setValue(settings->fadeoutTime() / 1000.0);
+    ui.spinBoxFontSize->setValue(settings->fontSize());
+    ui.spinBoxDockSize->setValue(settings->dockHeight());
+    setBackgroundColor(settings->backgroundColor());
+    ui.spinOpacity->setValue(settings->backgroundOpacity() * 100);
+}
+
 void Dialog::saveSettings()
 {
     settings->setFadeoutTime(ui.spinBoxFadeoutTime->value() * 1000);
     settings->setFontSize(ui.spinBoxFontSize->value());
     settings->setDockHeight(ui.spinBoxDockSize->value());
+    settings->setBackgroundColor(parseColorString(ui.lineEditColor->text()));
+    settings->setBackgroundOpacity(ui.spinOpacity->value() / 100.0);
+}
+
+QColor Dialog::parseColorString(const QString &col)
+{
+    QString red, green, blue;
+
+    red = col.mid(1, 2);
+    green = col.mid(3, 2);
+    blue = col.mid(5, 2);
+    return QColor::fromRgb(red.toInt(0, 16), green.toInt(0, 16), blue.toInt(0, 16));
+}
+
+void Dialog::setBackgroundColor(const QColor &col, ColorUpdateType update)
+{
+    QString sColor;
+    QImage img(32, 32, QImage::Format_RGB32);
+
+    img.fill(col);
+
+    // convert color to hex string
+    sColor = QString("#%1%2%3")
+        .arg(col.red(), 2, 16, QLatin1Char('0'))
+        .arg(col.green(), 2, 16, QLatin1Char('0'))
+        .arg(col.blue(), 2, 16, QLatin1Char('0'));
+
+    if (update == UpdateLineEdit)
+        ui.lineEditColor->setText(sColor);
+    ui.lblColorPreview->setPixmap(QPixmap::fromImage(img));
+}
+
+void Dialog::backgroundColorChanged(const QString &sColor)
+{
+    QColor col = parseColorString(sColor);
+    setBackgroundColor(col, NoUpdateLineEdit);
 }
 
 void Dialog::fadeoutTimeChanged(int value)
@@ -119,6 +168,21 @@ void Dialog::fadeoutTimeChanged(int value)
 void Dialog::fadeoutTimeChanged(double value)
 {
     ui.sliderFadeoutTime->setValue(value * 1000);
+}
+
+void Dialog::changeShortcut()
+{
+    QMessageBox::information(this, tr("Change shortcut"), tr("Sorry, not yet implemented."));
+}
+
+void Dialog::selectColor()
+{
+    QColorDialog dlg;
+
+    if (dlg.exec() == QDialog::Accepted) {
+        QColor col = dlg.selectedColor();
+        setBackgroundColor(col);
+    }
 }
 
 void Dialog::showAbout()
