@@ -24,7 +24,7 @@ AboutDialog::AboutDialog(QWidget *parent)
 {
     ui.setupUi(this);
 
-    ui.lblVersion->setText(tr("Version: %1 %2").arg(VERSION).arg(VERSION_SUFFIX));
+    ui.lblVersion->setText(tr("Version: %1 %2\nBuild from Git: Sha %3").arg(VERSION).arg(VERSION_SUFFIX).arg(GIT_SHA1));
     ui.lblLicense->setText(tr("License: %1").arg(LICENSE));
     ui.lblCopyright->setText(tr("%1").arg(COPYRIGHT));
 }
