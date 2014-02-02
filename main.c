@@ -50,7 +50,9 @@ void die(const char *fmt, ...)
     int error = errno;
     const char *errmsg = strerror(error);
 
-    fprintf(stderr, "Error: %s (%i)\n", errmsg, error);
+    if (error != 0)
+        fprintf(stderr, "Error: %s (%i)\n", errmsg, error);
+
     va_start(ap, fmt);
     vfprintf(stderr, fmt, ap);
     va_end(ap);
@@ -110,7 +112,7 @@ int main(int argc, char *argv[])
             len += optarglen;
             len += 4;                 /* for ".map" */
             if (len > sizeof(layout) - 1) {
-                die("The given layout name was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+                die("The given layout name was too long. Paths are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
             }
             /* concatenate using simple mempcpy */
             tmp = mempcpy(layout, PREFIX_ETC, strlen(PREFIX_ETC));
@@ -121,7 +123,7 @@ int main(int argc, char *argv[])
         case 'd':
             len = strlen(optarg);
             if (len > sizeof(device) - 1) {
-                die("The given path was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+                die("The given path was too long. Paths are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
             }
             /* we know already the length, so we use memcpy instead of strncpy which has various problems */
             memcpy(device, optarg, len);
