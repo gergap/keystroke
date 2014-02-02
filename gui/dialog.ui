@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>205</height>
+    <height>211</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,7 +30,7 @@
           <number>200</number>
          </property>
          <property name="value">
-          <number>100</number>
+          <number>1</number>
          </property>
         </widget>
        </item>
@@ -91,7 +91,7 @@
           <double>30.000000000000000</double>
          </property>
          <property name="value">
-          <double>2.500000000000000</double>
+          <double>0.100000000000000</double>
          </property>
         </widget>
        </item>
@@ -142,7 +142,7 @@
           <number>800</number>
          </property>
          <property name="value">
-          <number>200</number>
+          <number>1</number>
          </property>
         </widget>
        </item>
@@ -190,7 +190,7 @@
        <item row="0" column="3">
         <widget class="QLineEdit" name="lineEditColor">
          <property name="inputMask">
-          <string>\#HHHHHH; </string>
+          <string>\#HHHHHH</string>
          </property>
          <property name="text">
           <string>#000000</string>
@@ -316,6 +316,24 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>btnShortcut</tabstop>
+  <tabstop>sliderFadeoutTime</tabstop>
+  <tabstop>spinBoxFadeoutTime</tabstop>
+  <tabstop>sliderFontSize</tabstop>
+  <tabstop>spinBoxFontSize</tabstop>
+  <tabstop>sliderDockSize</tabstop>
+  <tabstop>spinBoxDockSize</tabstop>
+  <tabstop>lineEditColor</tabstop>
+  <tabstop>btnSelectColor</tabstop>
+  <tabstop>sliderOpacity</tabstop>
+  <tabstop>spinOpacity</tabstop>
+  <tabstop>chkBackspace</tabstop>
+  <tabstop>btnOk</tabstop>
+  <tabstop>btnApply</tabstop>
+  <tabstop>btnCancel</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -341,8 +359,8 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>186</x>
-     <y>116</y>
+     <x>268</x>
+     <y>148</y>
     </hint>
     <hint type="destinationlabel">
      <x>344</x>
@@ -389,12 +407,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>177</x>
-     <y>71</y>
+     <x>63</x>
+     <y>49</y>
     </hint>
     <hint type="destinationlabel">
-     <x>229</x>
-     <y>71</y>
+     <x>82</x>
+     <y>49</y>
     </hint>
    </hints>
   </connection>
@@ -405,12 +423,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>302</x>
-     <y>67</y>
+     <x>82</x>
+     <y>49</y>
     </hint>
     <hint type="destinationlabel">
-     <x>196</x>
-     <y>73</y>
+     <x>63</x>
+     <y>49</y>
     </hint>
    </hints>
   </connection>
