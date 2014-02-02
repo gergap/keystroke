@@ -32,13 +32,13 @@ struct key_entry {
 
 struct key_entry map[NUM_SYMBOLS];
 
-void loadmap(const char *filename)
+int loadmap(const char *filename)
 {
     FILE *f = fopen(filename, "r");
     int i = 0;
     int ret;
 
-    if (f == 0) return;
+    if (f == 0) return -1;
 
     while (i < NUM_SYMBOLS) {
         ret = fscanf(f, "%s %s %s %s", map[i].symbol, map[i].key,
@@ -50,6 +50,7 @@ void loadmap(const char *filename)
     }
 
     fclose(f);
+    return 0;
 }
 
 void printmap()

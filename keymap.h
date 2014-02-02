@@ -27,7 +27,7 @@
 extern "C" {
 #endif
 
-    void loadmap(const char *filename);
+    int loadmap(const char *filename);
     const char* key_lookup(int keycode, int shift, int altgr);
 
 #ifdef __cplusplus

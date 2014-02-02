@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
-
+#define _GNU_SOURCE
 #include <linux/input.h>
 #include <linux/limits.h>
 #include <unistd.h>
@@ -69,8 +69,9 @@ void usage(const char *app)
     fprintf(stderr, "Usage: %s [-h] [-v] [-d <device>] [-l <layout>]\n", app);
     fprintf(stderr, "-h : show this help\n");
     fprintf(stderr, "-v : show version info\n");
-    fprintf(stderr, "-d : configure keyboard device\n");
-    fprintf(stderr, "-l : configure keyboard layout\n");
+    fprintf(stderr, "-d : configure keyboard device. E.g. "
+        "/dev/input/by-path/pci-0000:00:1d.0-usb-0:1.3:1.2-event-kbd\n");
+    fprintf(stderr, "-l : configure keyboard layout. E.g. \"de\", or \"us\"\n");
     exit(1);
 }
 
@@ -78,9 +79,11 @@ void usage(const char *app)
 int main(int argc, char *argv[])
 {
     char device[PATH_MAX] = KBD_DEVICE;
-    char layout[PATH_MAX] = "de.map";
+    char layout[PATH_MAX] = PREFIX_ETC "de.map";
+    char ext[] = ".map";
+    char *tmp;
     int ret;
-    int len;
+    int len, optarglen;
     int opt;
 #ifndef GUI
     struct input_event ev;
@@ -101,13 +104,19 @@ int main(int argc, char *argv[])
             exit(EXIT_SUCCESS);
             break;
         case 'l':
-            len = strlen(optarg);
+            /* verfiy string length before doing anything */
+            optarglen = strlen(optarg);
+            len = strlen(PREFIX_ETC); /* this strlen is computed at compile time */
+            len += optarglen;
+            len += 4;                 /* for ".map" */
             if (len > sizeof(layout) - 1) {
-                die("The given path was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
+                die("The given layout name was too long. Paths a are limited to PATH_MAX=%i bytes.\n", PATH_MAX);
             }
-            /* we know already the length, so we use memcpy instead of strncpy which has various problems */
-            memcpy(layout, optarg, len);
-            layout[len] = 0;
+            /* concatenate using simple mempcpy */
+            tmp = mempcpy(layout, PREFIX_ETC, strlen(PREFIX_ETC));
+            tmp = mempcpy(tmp, optarg, optarglen);
+            tmp = mempcpy(tmp, ext, strlen(ext));
+            *tmp = 0;
             break;
         case 'd':
             len = strlen(optarg);
@@ -137,7 +146,9 @@ int main(int argc, char *argv[])
         printf("Root privileges have been dropped. Running as normal user now.\n");
     }
 
-    loadmap(layout);
+    if (loadmap(layout) != 0) {
+        die("loading keymap '%s' failed.\n", layout);
+    }
     //printmap();
 
 #ifdef GUI

@@ -124,7 +124,10 @@ install(TARGETS keystroke
                 GROUP_EXECUTE GROUP_READ
                 WORLD_EXECUTE WORLD_READ
                 SETUID)
+
+install(FILES us.map de.map DESTINATION etc/keystroke)
 #}}}
+
 
 # VIM modeline
 # vim:ts=4:sw=4:expandtab:tw=120:fdm=marker

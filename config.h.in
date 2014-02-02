@@ -26,8 +26,10 @@
 #cmakedefine MAJOR_VERSION  @MAJOR_VERSION@
 #cmakedefine MINOR_VERSION  @MINOR_VERSION@
 #cmakedefine PATCH_VERSION  @PATCH_VERSION@
-#cmakedefine VERSION_SUFFIX "@VERSION_SUFFIX@"
+#define VERSION_SUFFIX "@VERSION_SUFFIX@"
 #cmakedefine GIT_SHA1       "@GIT_SHA1@"
+#define PREFIX         "@CMAKE_INSTALL_PREFIX@/"
+#define PREFIX_ETC     "@CMAKE_INSTALL_PREFIX@/etc/keystroke/"
 
 /* set default values for missing defines */
 #ifndef MAJOR_VERSION
@@ -38,9 +40,6 @@
 #endif
 #ifndef PATCH_VERSION
 # define PATCH_VERSION 0
-#endif
-#ifndef VERSION_SUFFIX
-# define VERSION_SUFFIX ""
 #endif
 
 #endif /* CONFIG_H */
