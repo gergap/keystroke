@@ -37,13 +37,16 @@ Changelog
   missing.
 * add commandline option to specify keyboard device. This way you can make other keyboards working.
   Default: /dev/input/by-path/platform-i8042-serio-0-event-kbd
-
-    $ # example for USB keyboard
-    $ /usr/local/bin/keystroke-gui -d /dev/input/by-path/pci-0000:00:1d.0-usb-0:1.3:1.2-event-kbd
-
 * add commandline option to specify keyboard layout (default=de).
 
-    $ # example for US keyboard layout
+
+
+Examples:
+
+    # example for USB keyboard
+    $ /usr/local/bin/keystroke-gui -d /dev/input/by-path/pci-0000:00:1d.0-usb-0:1.3:1.2-event-kbd
+
+    # example for US keyboard layout
     $ /usr/local/bin/keystroke-gui -l us
 
 Background / Motivation
