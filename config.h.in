@@ -39,6 +39,9 @@
 #ifndef PATCH_VERSION
 # define PATCH_VERSION 0
 #endif
+#ifndef VERSION_SUFFIX
+# define VERSION_SUFFIX ""
+#endif
 
 #endif /* CONFIG_H */
 
