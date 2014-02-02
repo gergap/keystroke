@@ -19,7 +19,6 @@
 #include "dialog.h"
 #include "settings.h"
 #include "aboutdialog.h"
-#include "../config.h"
 #include <QtGui>
 
 Dialog::Dialog() : QDialog()
@@ -127,8 +126,5 @@ void Dialog::showAbout()
     AboutDialog dlg;
 
     dlg.exec();
-    /*QString title = tr("About %1").arg(PROGRAM_NAME);
-    QString message = tr("<b>%1</b>\nVersion: %2\n%3").arg(PROGRAM_NAME).arg(VERSION).arg(COPYRIGHT);
-    QMessageBox::about(this, title, message);*/
 }
 

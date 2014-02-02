@@ -1,0 +1,44 @@
+/*******************************************************************************
+**
+** Copyright (C) 2005-2013 Unified Automation GmbH. All Rights Reserved.
+** Web: http://www.unified-automation.com
+** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+**
+** This software is licensed under the proprietary Software License Agreement
+** (SLA) of Unified Automation GmbH. You are not allowed to publish, distribute,
+** sublicense, and/or sell the Source Code of this Software.
+** Get full License Agreement at: license@www.unified-automation.com
+**
+** This file was generated using CMake on @TIMESTAMP@.
+** Don't modify this file! All changes will be lost!
+** Use CMake to change the configuration.
+**
+*******************************************************************************/
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#define COPYRIGHT      "Copyright (C) 2014 Gerhard Gappmeier <gappy1502@gmx.net>"
+#define LICENSE        "GNU GENERAL PUBLIC LICENSE Version 3"
+#cmakedefine PROGRAM_NAME   "@PROGRAM_NAME@"
+#cmakedefine VERSION        "@VERSION@"
+#cmakedefine MAJOR_VERSION  @MAJOR_VERSION@
+#cmakedefine MINOR_VERSION  @MINOR_VERSION@
+#cmakedefine PATCH_VERSION  @PATCH_VERSION@
+#cmakedefine VERSION_SUFFIX "@VERSION_SUFFIX@"
+#cmakedefine GIT_SHA1       "@GIT_SHA1@"
+
+/* set default values for missing defines */
+#ifndef MAJOR_VERSION
+# define MAJOR_VERSION 0
+#endif
+#ifndef MINOR_VERSION
+# define MINOR_VERSION 0
+#endif
+#ifndef PATCH_VERSION
+# define PATCH_VERSION 0
+#endif
+
+#endif /* CONFIG_H */
+

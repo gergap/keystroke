@@ -17,11 +17,16 @@
  */
 
 #include "aboutdialog.h"
+#include <config.h>
 
 AboutDialog::AboutDialog(QWidget *parent)
     : QDialog(parent)
 {
     ui.setupUi(this);
+
+    ui.lblVersion->setText(tr("Version: %1 %2").arg(VERSION).arg(VERSION_SUFFIX));
+    ui.lblLicense->setText(tr("License: %1").arg(LICENSE));
+    ui.lblCopyright->setText(tr("%1").arg(COPYRIGHT));
 }
 
 

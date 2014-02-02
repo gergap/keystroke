@@ -32,7 +32,7 @@
 #ifdef GUI
 # include "gui/gui.h"
 #endif
-#include "config.h"
+#include <config.h>
 
 volatile int stop = 0;
 int keyboard_fd = 0;
