@@ -13,10 +13,38 @@ might be useful for somebody and to get some feedback.
 
 Things that are missing at the moment:
 
-* more options for keyboard translations:
-    * Mode 1) SHIFT+A -> A
-    * Mode 2) SHIFT+A -> SHIFT + a, CTRL-C -> CTRL-C
-    * Mode 3) intelligent mapping: SHIFT+A -> A, but CTRL+C stays CTRL+C
+* more intelligent key display
+    * what should by displayed as key-combination and what as a composed key: SHIFt + a = A, CTRL  + c = CTRL-C
+    * enable backspace key: this by pressing backspace the previous typed key can be removed
+      instead of simply displaying the backspace symbol
+* add keyboard device selection to GUI
+* add mouse display. It's named keystroke, but showing mouse buttons is even
+  easier than that.
+
+Changelog
+---------
+
+14-01-31 - V0.0.1: This version was the first version. It didn't really had a version number, but I made this
+    public available to get some first feedback.
+
+14-02-02 - V0.0.2: First real release.
+
+* add version info
+* add about dialog
+* improved error handling
+* add example keyboard mapping for US keyboard
+* make the config dialog working (not yet completed). Add "yet not implemented" messages were functionality is
+  missing.
+* add commandline option to specify keyboard device. This way you can make other keyboards working.
+  Default: /dev/input/by-path/platform-i8042-serio-0-event-kbd
+
+    $ # example for USB keyboard
+    $ /usr/local/bin/keystroke-gui -d /dev/input/by-path/pci-0000:00:1d.0-usb-0:1.3:1.2-event-kbd
+
+* add commandline option to specify keyboard layout (default=de).
+
+    $ # example for US keyboard layout
+    $ /usr/local/bin/keystroke-gui -l us
 
 Background / Motivation
 -----------------------
@@ -51,7 +79,7 @@ Providing my own mapping file, e.g. de.map.
 
 This may sound like duplicating code that exists elsewhere, but it isn't.
 
-1. It's a simple plain text file which easy to understand, so creating other
+1. It's a simple plain text file which is easy to understand, so creating other
 mappings is easy.
 2. For our application we need some other kind of mapping anyway. It's not all
 about mapping single characters like 'z' to 'y'.
