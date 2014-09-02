@@ -53,11 +53,22 @@ extern "C" int qtmain(int argc, char *argv[])
     // no window decorations
     viewer.setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint | Qt::Tool);
     viewer.resize(s->dockWidth(), s->dockHeight());
-    viewer.move(s->dockPosition());
+    viewer.move(s->dockOffset());
+/*    switch (s->dockPosition()) {
+    case Settings::Top:
+        break;
+    case Settings::Bottom:
+        break;
+    case Settings::Left:
+        break;
+    case Settings::Right:
+        break;
+    }*/
+
     qDebug() << s->dockWidth();
     qDebug() << s->dockHeight();
-    qDebug() << s->dockPosition();
-//    viewer.show();
+    qDebug() << s->dockOffset();
+    viewer.show();
 
     QObject::connect(s, SIGNAL(dockWidthChanged(int)), &viewer, SLOT(dockWidthChanged(int)));
     QObject::connect(s, SIGNAL(dockHeightChanged(int)), &viewer, SLOT(dockHeightChanged(int)));

@@ -37,10 +37,12 @@ Settings::Settings(QObject *parent)
     m_fadeoutTime = s.value("fadeoutTime", 2500).toInt();
     m_dockWidth = s.value("dockWidth", defaultDockWidth).toInt();
     m_dockHeight = s.value("dockHeight", defaultDockHeight).toInt();
-    m_dockPos = s.value("dockPos", QPoint(0, r.height() - m_dockHeight)).toPoint();
+    m_dockOffset = s.value("dockOffset", QPoint(0, r.height() - m_dockHeight)).toPoint();
     m_bgcolor = s.value("backgroundColor", Qt::black).value<QColor>();
     m_bgopacity = s.value("backgroundOpacity", 0.4).toDouble();
     m_bBackspaceEnabled = s.value("backspaceEnabled", false).toBool();
+    m_dockPos = (DockingPosition)s.value("dockPos", Bottom).toInt();
+    m_offsetFromEdge = s.value("offsetFromEdge", 0).toInt();
 }
 
 Settings::~Settings()
@@ -51,10 +53,12 @@ Settings::~Settings()
     s.setValue("fadeoutTime", m_fadeoutTime);
     s.setValue("dockWidth", m_dockWidth);
     s.setValue("dockHeight", m_dockHeight);
-    s.setValue("dockPos", m_dockPos);
+    s.setValue("dockOffset", m_dockOffset);
     s.setValue("backgroundColor", m_bgcolor);
     s.setValue("backgroundOpacity", m_bgopacity);
     s.setValue("backspaceEnabled", m_bBackspaceEnabled);
+    s.setValue("dockPos", m_dockPos);
+    s.setValue("offsetFromEdge", m_offsetFromEdge);
 }
 
 int Settings::fontSize() const
@@ -106,26 +110,32 @@ void Settings::setDockHeight(int val)
     if (val != m_dockHeight) {
         m_dockHeight = val;
         emit dockHeightChanged(val);
-
-        QDesktopWidget desktop;
-        int primary = desktop.primaryScreen();
-        QRect r = desktop.screenGeometry(primary);
-        QPoint pos(0, r.height() - m_dockHeight);
-        setDockPosition(pos);
+        computeDockPos();
     }
 }
 
-QPoint Settings::dockPosition() const
+QPoint Settings::dockOffset() const
+{
+    return m_dockOffset;
+}
+
+void Settings::setDockOffset(const QPoint &val)
+{
+    if (val != m_dockOffset) {
+        m_dockOffset = val;
+        emit dockOffsetChanged(val);
+    }
+}
+
+Settings::DockingPosition Settings::dockPosition() const
 {
     return m_dockPos;
 }
 
-void Settings::setDockPosition(const QPoint &val)
+void Settings::setDockPosition(const Settings::DockingPosition val)
 {
-    if (val != m_dockPos) {
-        m_dockPos = val;
-        emit dockPositionChanged(val);
-    }
+    m_dockPos = val;
+    computeDockPos();
 }
 
 Settings *Settings::instance()
@@ -174,3 +184,46 @@ void Settings::setBackspaceEnabled(bool enabled)
     }
 }
 
+int Settings::offsetFromEdge() const
+{
+    return m_offsetFromEdge;
+}
+
+void Settings::setOffsetFromEdge(int val)
+{
+    if (val != m_offsetFromEdge) {
+        m_offsetFromEdge = val;
+        computeDockPos();
+        emit offsetFromEdgeChanged(val);
+    }
+}
+
+void Settings::computeDockPos()
+{
+    QDesktopWidget desktop;
+    int primary = desktop.primaryScreen();
+    QRect r = desktop.screenGeometry(primary);
+
+    switch (m_dockPos) {
+    case Top:
+        m_dockOffset = QPoint(0, m_offsetFromEdge);
+        m_dockWidth = r.width();
+        //m_dockHeight = r.height() / 4;
+        break;
+    case Bottom:
+        m_dockWidth = r.width();
+        //m_dockHeight = r.height() / 4;
+        m_dockOffset = QPoint(0, r.height() - m_dockHeight - m_offsetFromEdge);
+        break;
+    case Left:
+        m_dockOffset = QPoint(m_offsetFromEdge, 0);
+        //m_dockWidth = r.width() / 4;
+        m_dockHeight = r.height();
+        break;
+    case Right:
+        //m_dockWidth = r.width() / 4;
+        m_dockHeight = r.height();
+        m_dockOffset = QPoint(r.width() - m_dockWidth - m_offsetFromEdge, 0);
+        break;
+    }
+}

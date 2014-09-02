@@ -59,7 +59,7 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 ################################################################################
 # We try to compile with the highest warning level with all compilers.
 # GCC compiler
-if(CMAKE_COMPILER_ISGNUCC OR CMAKE_COMPILER_ISGNUCXX)
+if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
     # enable all warnings
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")

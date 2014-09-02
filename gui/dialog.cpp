@@ -34,6 +34,7 @@ Dialog::Dialog() : QDialog()
     connect(ui.btnShortcut, SIGNAL(clicked()), this, SLOT(changeShortcut()));
     connect(ui.btnSelectColor, SIGNAL(clicked()), this, SLOT(selectColor()));
     connect(ui.lineEditColor, SIGNAL(textChanged(QString)), this, SLOT(backgroundColorChanged(QString)));
+    connect(ui.cmbDockPos, SIGNAL(currentIndexChanged(int)), this, SLOT(dockPositionChanged(int)));
 
     loadSettings();
 
@@ -113,6 +114,7 @@ void Dialog::loadSettings()
     ui.spinBoxFadeoutTime->setValue(settings->fadeoutTime() / 1000.0);
     ui.spinBoxFontSize->setValue(settings->fontSize());
     ui.spinBoxDockSize->setValue(settings->dockHeight());
+    ui.spinBoxDockOffset->setValue(settings->offsetFromEdge());
     setBackgroundColor(settings->backgroundColor());
     ui.spinOpacity->setValue(settings->backgroundOpacity() * 100);
 }
@@ -122,6 +124,24 @@ void Dialog::saveSettings()
     settings->setFadeoutTime(ui.spinBoxFadeoutTime->value() * 1000);
     settings->setFontSize(ui.spinBoxFontSize->value());
     settings->setDockHeight(ui.spinBoxDockSize->value());
+    settings->setOffsetFromEdge(ui.spinBoxDockOffset->value());
+    switch (ui.cmbDockPos->currentIndex()) {
+    case 0:
+        settings->setDockPosition(Settings::Top);
+        break;
+    case 1:
+        settings->setDockPosition(Settings::Bottom);
+        break;
+    case 2:
+        settings->setDockPosition(Settings::Left);
+        break;
+    case 3:
+        settings->setDockPosition(Settings::Right);
+        break;
+    default:
+        settings->setDockPosition(Settings::Top);
+        break;
+    }
     settings->setBackgroundColor(parseColorString(ui.lineEditColor->text()));
     settings->setBackgroundOpacity(ui.spinOpacity->value() / 100.0);
 }
@@ -190,5 +210,10 @@ void Dialog::showAbout()
     AboutDialog dlg;
 
     dlg.exec();
+}
+
+void Dialog::dockPositionChanged(int)
+{
+
 }
 

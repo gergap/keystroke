@@ -136,8 +136,12 @@ int main(int argc, char *argv[])
 
     /* the 1st thing we do is opening the keyboard device,
      * note that you will need root privileges for that */
+#if 1
     keyboard_fd = open(device, O_RDONLY);
     if (keyboard_fd < 0) die("Cannot open device '%s'\n", device);
+#else
+    keyboard_fd = 0;
+#endif
 
     /* the next thing is to drop root privileges if we were
      * started with setuid bit

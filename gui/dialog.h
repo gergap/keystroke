@@ -50,6 +50,7 @@ private slots:
     void selectColor();
     void backgroundColorChanged(const QString &sColor);
     void showAbout();
+    void dockPositionChanged(int);
 
 private:
     void createActions();
@@ -57,6 +58,7 @@ private:
     void loadSettings();
     void saveSettings();
     void setBackgroundColor(const QColor &col, ColorUpdateType update = UpdateLineEdit);
+    void computeDockPos();
     QColor parseColorString(const QString &col);
 
     QAction *configureAction;

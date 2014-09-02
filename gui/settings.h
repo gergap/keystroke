@@ -26,16 +26,27 @@
 class Settings : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(DockingPosition)
     Q_PROPERTY(int fontSize         READ fontSize     WRITE setFontSize     NOTIFY fontSizeChanged)
     Q_PROPERTY(int fadeoutTime      READ fadeoutTime  WRITE setFadeoutTime  NOTIFY fadeoutTimeChanged)
     Q_PROPERTY(int dockWidth        READ dockWidth    WRITE setDockWidth    NOTIFY dockWidthChanged)
     Q_PROPERTY(int dockHeight       READ dockHeight   WRITE setDockHeight   NOTIFY dockHeightChanged)
-    Q_PROPERTY(QPoint dockPosition  READ dockPosition WRITE setDockPosition NOTIFY dockPositionChanged)
+    Q_PROPERTY(int offsetFromEdge          READ offsetFromEdge   WRITE setOffsetFromEdge   NOTIFY offsetFromEdgeChanged)
+    Q_PROPERTY(QPoint dockOffset    READ dockOffset   WRITE setDockOffset   NOTIFY dockOffsetChanged)
     Q_PROPERTY(QColor backgroundColor  READ backgroundColor WRITE setBackgroundColor NOTIFY backgroundColorChanged)
     Q_PROPERTY(double backgroundOpacity  READ backgroundOpacity WRITE setBackgroundOpacity NOTIFY backgroundOpacityChanged)
     Q_PROPERTY(bool backspaceEnabled  READ backspaceEnabled WRITE setBackspaceEnabled NOTIFY backspaceEnabledChanged)
+    Q_PROPERTY(DockingPosition dockPosition  READ dockPosition WRITE setDockPosition NOTIFY dockPositionChanged)
     Settings(QObject *parent = 0);
+
 public:
+    enum DockingPosition {
+        Top,
+        Bottom,
+        Left,
+        Right
+    };
+
     virtual ~Settings();
 
     int fontSize() const;
@@ -46,8 +57,12 @@ public:
     void setDockWidth(int val);
     int dockHeight() const;
     void setDockHeight(int val);
-    QPoint dockPosition() const;
-    void setDockPosition(const QPoint &val);
+    QPoint dockOffset() const;
+    void setDockOffset(const QPoint &val);
+    DockingPosition dockPosition() const;
+    void setDockPosition(const DockingPosition val);
+    int offsetFromEdge() const;
+    void setOffsetFromEdge(int val);
     QColor backgroundColor() const;
     void setBackgroundColor(const QColor &col);
     double backgroundOpacity() const;
@@ -62,20 +77,27 @@ signals:
     void fadeoutTimeChanged(int newVal);
     void dockWidthChanged(int newVal);
     void dockHeightChanged(int newVal);
-    void dockPositionChanged(const QPoint &newVal);
+    void dockOffsetChanged(const QPoint &newVal);
+    void dockPositionChanged(DockingPosition newVal);
     void backgroundColorChanged(const QColor &col);
     void backgroundOpacityChanged(double opacity);
     void backspaceEnabledChanged(bool enabled);
+    void offsetFromEdgeChanged(int newVal);
+
+private:
+    void computeDockPos();
 
 private:
     int m_fontSize;
     int m_fadeoutTime;
     int m_dockWidth;
     int m_dockHeight;
-    QPoint m_dockPos;
+    int m_offsetFromEdge;
+    QPoint m_dockOffset;
     QColor m_bgcolor;
     double m_bgopacity;
     bool   m_bBackspaceEnabled;
+    DockingPosition m_dockPos;
     static Settings *m_instance;
 };
 

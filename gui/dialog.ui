@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>211</height>
+    <height>358</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,27 +24,54 @@
        <string>General</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="2" column="2">
-        <widget class="QSpinBox" name="spinBoxFontSize">
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Test Field:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="4">
+        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+       </item>
+       <item row="0" column="2" colspan="2">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Enable/Disable Keygrabber</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSlider" name="sliderFontSize">
          <property name="maximum">
           <number>200</number>
          </property>
-         <property name="value">
-          <number>1</number>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="2" column="3">
-        <widget class="QLabel" name="label_6">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>point</string>
+          <string>Font Size:</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_4">
+       <item row="1" column="3">
+        <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Dock Size:</string>
+          <string>seconds</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QSlider" name="sliderDockSize">
+         <property name="maximum">
+          <number>800</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
@@ -52,6 +79,19 @@
         <widget class="QPushButton" name="btnShortcut">
          <property name="text">
           <string>Meta-F10</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QDoubleSpinBox" name="spinBoxFadeoutTime">
+         <property name="minimum">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="maximum">
+          <double>30.000000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.100000000000000</double>
          </property>
         </widget>
        </item>
@@ -69,6 +109,20 @@
          </property>
         </widget>
        </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Dock Size:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>pixel</string>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="1">
         <widget class="QSlider" name="sliderFadeoutTime">
          <property name="minimum">
@@ -76,60 +130,6 @@
          </property>
          <property name="maximum">
           <number>30000</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QDoubleSpinBox" name="spinBoxFadeoutTime">
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>30.000000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2" colspan="2">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Enable/Disable Keygrabber</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>seconds</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Font Size:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QSlider" name="sliderFontSize">
-         <property name="maximum">
-          <number>200</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QSlider" name="sliderDockSize">
-         <property name="maximum">
-          <number>800</number>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -146,25 +146,84 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="3">
-        <widget class="QLabel" name="label_7">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Dock Position:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>point</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QSpinBox" name="spinBoxFontSize">
+         <property name="maximum">
+          <number>200</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cmbDockPos">
+         <item>
+          <property name="text">
+           <string>Top</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Bottom</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Left</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Right</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Dock Offset:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QSpinBox" name="spinBoxDockOffset">
+         <property name="maximum">
+          <number>2000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3">
+        <widget class="QLabel" name="label_16">
          <property name="text">
           <string>pixel</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <spacer name="verticalSpacer_2">
+       <item row="5" column="1">
+        <widget class="QSlider" name="sliderDockOffset">
+         <property name="maximum">
+          <number>2000</number>
+         </property>
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -360,12 +419,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>258</x>
-     <y>108</y>
+     <x>248</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
-     <x>344</x>
-     <y>107</y>
+     <x>335</x>
+     <y>121</y>
     </hint>
    </hints>
   </connection>
@@ -376,12 +435,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>268</x>
-     <y>148</y>
+     <x>248</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
-     <x>344</x>
-     <y>134</y>
+     <x>335</x>
+     <y>148</y>
     </hint>
    </hints>
   </connection>
@@ -392,12 +451,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>344</x>
-     <y>134</y>
+     <x>335</x>
+     <y>148</y>
     </hint>
     <hint type="destinationlabel">
-     <x>258</x>
-     <y>135</y>
+     <x>248</x>
+     <y>145</y>
     </hint>
    </hints>
   </connection>
@@ -408,12 +467,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>344</x>
-     <y>107</y>
+     <x>335</x>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
-     <x>258</x>
-     <y>108</y>
+     <x>248</x>
+     <y>117</y>
     </hint>
    </hints>
   </connection>
@@ -424,12 +483,12 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>63</x>
-     <y>49</y>
+     <x>188</x>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
-     <x>82</x>
-     <y>49</y>
+     <x>247</x>
+     <y>94</y>
     </hint>
    </hints>
   </connection>
@@ -440,12 +499,44 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>49</y>
+     <x>247</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
-     <x>63</x>
-     <y>49</y>
+     <x>188</x>
+     <y>90</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderDockOffset</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>spinBoxDockOffset</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>224</x>
+     <y>193</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>189</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBoxDockOffset</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderDockOffset</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>307</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>227</x>
+     <y>192</y>
     </hint>
    </hints>
   </connection>
