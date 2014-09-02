@@ -96,7 +96,8 @@ void Settings::setDockWidth(int val)
 {
     if (val != m_dockWidth) {
         m_dockWidth = val;
-        emit dockHeightChanged(val);
+        emit dockWidthChanged(val);
+        computeDockPos();
     }
 }
 
@@ -207,22 +208,22 @@ void Settings::computeDockPos()
     switch (m_dockPos) {
     case Top:
         m_dockOffset = QPoint(0, m_offsetFromEdge);
-        m_dockWidth = r.width();
+        //m_dockWidth = r.width();
         //m_dockHeight = r.height() / 4;
         break;
     case Bottom:
-        m_dockWidth = r.width();
+        //m_dockWidth = r.width();
         //m_dockHeight = r.height() / 4;
         m_dockOffset = QPoint(0, r.height() - m_dockHeight - m_offsetFromEdge);
         break;
     case Left:
         m_dockOffset = QPoint(m_offsetFromEdge, 0);
         //m_dockWidth = r.width() / 4;
-        m_dockHeight = r.height();
+        //m_dockHeight = r.height();
         break;
     case Right:
         //m_dockWidth = r.width() / 4;
-        m_dockHeight = r.height();
+        //m_dockHeight = r.height();
         m_dockOffset = QPoint(r.width() - m_dockWidth - m_offsetFromEdge, 0);
         break;
     }

@@ -113,7 +113,8 @@ void Dialog::loadSettings()
 {
     ui.spinBoxFadeoutTime->setValue(settings->fadeoutTime() / 1000.0);
     ui.spinBoxFontSize->setValue(settings->fontSize());
-    ui.spinBoxDockSize->setValue(settings->dockHeight());
+    ui.spinBoxDockWidth->setValue(settings->dockWidth());
+    ui.spinBoxDockHeight->setValue(settings->dockHeight());
     ui.spinBoxDockOffset->setValue(settings->offsetFromEdge());
     setBackgroundColor(settings->backgroundColor());
     ui.spinOpacity->setValue(settings->backgroundOpacity() * 100);
@@ -123,7 +124,8 @@ void Dialog::saveSettings()
 {
     settings->setFadeoutTime(ui.spinBoxFadeoutTime->value() * 1000);
     settings->setFontSize(ui.spinBoxFontSize->value());
-    settings->setDockHeight(ui.spinBoxDockSize->value());
+    settings->setDockWidth(ui.spinBoxDockWidth->value());
+    settings->setDockHeight(ui.spinBoxDockHeight->value());
     settings->setOffsetFromEdge(ui.spinBoxDockOffset->value());
     switch (ui.cmbDockPos->currentIndex()) {
     case 0:

@@ -72,7 +72,7 @@ extern "C" int qtmain(int argc, char *argv[])
 
     QObject::connect(s, SIGNAL(dockWidthChanged(int)), &viewer, SLOT(dockWidthChanged(int)));
     QObject::connect(s, SIGNAL(dockHeightChanged(int)), &viewer, SLOT(dockHeightChanged(int)));
-    QObject::connect(s, SIGNAL(dockPositionChanged(const QPoint&)), &viewer, SLOT(dockPositionChanged(const QPoint&)));
+    QObject::connect(s, SIGNAL(dockOffsetChanged(const QPoint&)), &viewer, SLOT(dockOffsetChanged(const QPoint&)));
 
     ret = app.exec();
 

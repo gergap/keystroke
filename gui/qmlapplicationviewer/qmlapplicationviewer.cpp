@@ -186,7 +186,7 @@ void QmlApplicationViewer::dockHeightChanged(int newVal)
     resize(width(), newVal);
 }
 
-void QmlApplicationViewer::dockPositionChanged(const QPoint &newVal)
+void QmlApplicationViewer::dockOffsetChanged(const QPoint &newVal)
 {
     move(newVal);
 }

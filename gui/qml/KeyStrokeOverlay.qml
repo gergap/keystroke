@@ -25,6 +25,19 @@ Item {
     height: 600
     visible: false;
 
+    function clear() {
+        var i;
+        for (i=0; i<repeater.count; i++) {
+            repeater.itemAt(i).visible = false;
+        }
+    }
+
+    function hide() {
+        clear();
+        main.visible = false;
+        mainWindow.hide();
+    }
+
     Component.onCompleted: {
         grabber.start();
     }
@@ -55,12 +68,21 @@ Item {
             var i;
             console.log("key: "+key);
 
+            if (key == "SHIFT") return;
+
             for (i=0; i<repeater.count; i++) {
                 if (repeater.itemAt(i).visible === false) {
                     repeater.itemAt(i).text = key;
                     repeater.itemAt(i).visible = true;
                     break;
                 }
+            }
+
+            if (key == "ESC"/* || key == "ENTER"*/) {
+                //clear();
+                hide();
+                timer.stop();
+                return;
             }
 
             timer.stop();
@@ -73,13 +95,6 @@ Item {
     Timer {
         id: timer
         interval: settings.fadeoutTime; running: false; repeat: false
-        onTriggered: {
-            var i;
-            for (i=0; i<repeater.count; i++) {
-                repeater.itemAt(i).visible = false;
-            }
-            main.visible = false;
-            mainWindow.hide();
-        }
+        onTriggered: hide();
     }
 }

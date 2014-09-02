@@ -21,8 +21,8 @@ import com.gappy.keygrabber 1.0
 
 Item {
     id: key
-    width: 192
-    height: 192
+    width: 96
+    height: 96
     property alias text: label.text
 
     /*
@@ -50,8 +50,8 @@ Item {
         visible: false
 
         onTextChanged: {
-            key.width = 128;
-            key.height = 128;
+            key.width = 96;
+            key.height = 96;
             var filename = "qrc:/png/" + text.toLowerCase() + ".png";
             var b = file.exists(filename);
             //console.log(filename + ": " + b);
@@ -64,7 +64,7 @@ Item {
             } else {
                 pic.visible = false;
                 label.visible = true;
-                key.width = 100 * text.length;
+                key.width = 50 * text.length;
             }
         }
     }
