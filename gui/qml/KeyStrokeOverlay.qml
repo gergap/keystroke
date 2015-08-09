@@ -18,12 +18,17 @@
 
 import QtQuick 1.1
 import com.gappy.keygrabber 1.0
+import com.gappy.mytcpserver 1.0
 
 Item {
     id: main
     width: 800
     height: 600
     visible: false;
+
+    MyTcpServer {
+        id: conn
+    }
 
     function clear() {
         var i;
@@ -90,6 +95,7 @@ Item {
             main.visible = true;
             mainWindow.show();
         }
+        enabled: conn.enabled;
     }
 
     Timer {

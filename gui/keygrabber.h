@@ -24,6 +24,7 @@
 class KeyGrabber : public QThread
 {
     Q_OBJECT
+    Q_PROPERTY(bool enabled READ enabled WRITE setEnabled)
 public:
     explicit KeyGrabber(QObject *parent = 0);
 

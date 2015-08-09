@@ -23,6 +23,7 @@
 #include "dialog.h"
 #include "file.h"
 #include "settings.h"
+#include "mytcpserver.h"
 
 extern "C" int qtmain(int argc, char *argv[])
 {
@@ -39,6 +40,7 @@ extern "C" int qtmain(int argc, char *argv[])
 
     qmlRegisterType<KeyGrabber>("com.gappy.keygrabber", 1, 0, "KeyGrabber");
     qmlRegisterType<File>("com.gappy.keygrabber", 1, 0, "File");
+    qmlRegisterType<MyTcpServer>("com.gappy.mytcpserver", 1, 0, "MyTcpServer");
 
     QmlApplicationViewer viewer;
     viewer.addImportPath(QLatin1String("modules"));
