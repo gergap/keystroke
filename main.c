@@ -197,6 +197,7 @@ int main(int argc, char *argv[])
                 switch (ev.code) {
                 case KEY_LEFTSHIFT:
                     shift |= 1;
+                    break;
                 case KEY_RIGHTSHIFT:
                     shift |= 2;
                     break;
