@@ -85,7 +85,8 @@ int main(int argc, char *argv[])
     char ext[] = ".map";
     char *tmp;
     int ret;
-    int len, optarglen;
+    size_t len;
+    int optarglen;
     int opt;
 #ifndef GUI
     struct input_event ev;
@@ -165,7 +166,7 @@ int main(int argc, char *argv[])
         ret = read(keyboard_fd, &ev, sizeof(ev));
         if (ret == -1 && errno == EINTR)
             continue;
-        if (ret < sizeof(ev)) {
+        if ((size_t)ret < sizeof(ev)) {
             printf("read returned invalid size\n");
             break;
         }
