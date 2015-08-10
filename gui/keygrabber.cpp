@@ -128,6 +128,7 @@ void KeyGrabber::run()
         if (symbol) {
             if (m_bEnabled) {
                 QString key = QString::fromUtf8(symbol);
+                qDebug() << "QString key:" << key;
                 emit keyPressed_Internal(key);
             }
             symbol = 0;

@@ -64,7 +64,7 @@ Item {
             } else {
                 pic.visible = false;
                 label.visible = true;
-                key.width = 50 * text.length;
+                key.width = label.paintedWidth;
             }
         }
     }

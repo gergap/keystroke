@@ -78,6 +78,7 @@ static int key_translation_lookup(const char *symbol)
 const char *key_lookup(int keycode, int shift, int altgr, int ctrl)
 {
     const char *symbol;
+    static char buf[20];
     int index;
 
     if (keycode < 0 || keycode > KEY_MAX) return NULL;
@@ -86,13 +87,18 @@ const char *key_lookup(int keycode, int shift, int altgr, int ctrl)
     index = key_translation_lookup(symbol);
     if (index != -1) {
         if (shift == 0 && altgr == 0)
-            return map[index].key;
+            symbol = map[index].key;
         else if (shift > 0 && altgr == 0)
-            return map[index].key_shift;
+            symbol = map[index].key_shift;
         else if (shift == 0 && altgr > 0)
-            return map[index].key_altgr;
+            symbol = map[index].key_altgr;
         else
-            return map[index].key;
+            symbol = map[index].key;
+
+        if (ctrl) {
+            snprintf(buf, sizeof(buf), "<C-%s>", symbol);
+            symbol = buf;
+        }
     } else {
         /* some default mappings */
         if (   strcmp(symbol, "LEFTCTRL") == 0

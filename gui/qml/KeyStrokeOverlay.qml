@@ -74,6 +74,7 @@ Item {
             console.log("key: "+key);
 
             if (key == "SHIFT") return;
+            if (key == "CTRL") return;
 
             for (i=0; i<repeater.count; i++) {
                 if (repeater.itemAt(i).visible === false) {
