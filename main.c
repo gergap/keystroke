@@ -91,6 +91,7 @@ int main(int argc, char *argv[])
     struct input_event ev;
     int shift = 0;
     int altgr = 0;
+    int ctrl = 0;
     const char *symbol;
 #endif
 
@@ -189,6 +190,12 @@ int main(int argc, char *argv[])
                 case KEY_RIGHTALT:
                     altgr = 0;
                     break;
+                case KEY_LEFTCTRL:
+                    ctrl &= (~1);
+                    break;
+                case KEY_RIGHTCTRL:
+                    ctrl &= (~2);
+                    break;
                 default:
                     break;
                 }
@@ -204,9 +211,15 @@ int main(int argc, char *argv[])
                 case KEY_RIGHTALT:
                     altgr = 1;
                     break;
+                case KEY_LEFTCTRL:
+                    ctrl |= 1;
+                    break;
+                case KEY_RIGHTCTRL:
+                    ctrl |= 2;
+                    break;
                 default:
                     symbol = key_lookup(ev.code, shift, altgr);
-                    printf("pressed %s (%i), shift=%i, altgr=%i\n", symbol, ev.code, shift, altgr);
+                    printf("pressed %s (%i), shift=%i, altgr=%i, ctrl=%i\n", symbol, ev.code, shift, altgr, ctrl);
                     break;
                 }
                 break;
