@@ -30,6 +30,7 @@ KeyGrabber::KeyGrabber(QObject *parent) :
 {
     m_bShutdown = false;
     m_bEnabled = true;
+    m_bInsertMode = false;
 
     // marshal internal signal from worker thread to main thread using a queued connection
     connect(this, SIGNAL(keyPressed_Internal(QString)), this, SIGNAL(keyPressed(QString)), Qt::QueuedConnection);
@@ -126,10 +127,13 @@ void KeyGrabber::run()
         }
 
         if (symbol) {
+            bool control_key = shift | ctrl | altgr | meta;
             if (m_bEnabled) {
-                QString key = QString::fromUtf8(symbol);
-                qDebug() << "QString key:" << key;
-                emit keyPressed_Internal(key);
+                if (!m_bInsertMode || control_key) { /* only show control keys in insertmode */
+                    QString key = QString::fromUtf8(symbol);
+                    qDebug() << "QString key:" << key;
+                    emit keyPressed_Internal(key);
+                }
             }
             symbol = 0;
         }

@@ -25,6 +25,7 @@ class KeyGrabber : public QThread
 {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled)
+    Q_PROPERTY(bool insertMode READ insertMode WRITE setInsertMode)
 public:
     explicit KeyGrabber(QObject *parent = 0);
 
@@ -33,6 +34,8 @@ public:
 
     bool enabled() const { return m_bEnabled; }
     void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; }
+    bool insertMode() const { return m_bInsertMode; }
+    void setInsertMode(bool bEnabled) { m_bInsertMode = bEnabled; }
 
 signals:
     void keyPressed(const QString &key);
@@ -41,6 +44,7 @@ signals:
 private:
     bool m_bShutdown;
     bool m_bEnabled;
+    bool m_bInsertMode; /**< in insert mode we only display control key, no letters. */
 };
 
 #endif /* end of include guard: KEYGRABBER_H */

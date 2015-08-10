@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "disable" | nc localhost 9999
+

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "insertEnter" | nc localhost 9999
+

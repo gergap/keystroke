@@ -37,6 +37,12 @@ void MyTcpServer::newConnection()
     } else if (command == "disable\n") {
         m_enabled = false;
         emit enabledChanged(m_enabled);
+    } else if (command == "insertEnter\n") {
+        m_insertMode = true;
+        emit insertModeChanged(m_insertMode);
+    } else if (command == "insertLeave\n") {
+        m_insertMode = false;
+        emit insertModeChanged(m_insertMode);
     }
 
     qDebug() << command;
@@ -55,5 +61,18 @@ void MyTcpServer::setEnabled(bool enabled)
 bool MyTcpServer::enabled() const
 {
     return m_enabled;
+}
+
+void MyTcpServer::setInsertMode(bool enabled)
+{
+    if (enabled != m_insertMode) {
+        m_insertMode = enabled;
+        emit insertModeChanged(m_insertMode);
+    }
+}
+
+bool MyTcpServer::insertMode() const
+{
+    return m_insertMode;
 }
 

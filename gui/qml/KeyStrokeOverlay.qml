@@ -97,6 +97,7 @@ Item {
             mainWindow.show();
         }
         enabled: conn.enabled;
+        insertMode: conn.insertMode;
     }
 
     Timer {

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "enable" | nc localhost 9999
+
