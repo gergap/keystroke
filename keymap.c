@@ -75,7 +75,7 @@ static int key_translation_lookup(const char *symbol)
     return -1;
 }
 
-const char *key_lookup(int keycode, int shift, int altgr)
+const char *key_lookup(int keycode, int shift, int altgr, int ctrl)
 {
     const char *symbol;
     int index;

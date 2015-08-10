@@ -219,7 +219,7 @@ int main(int argc, char *argv[])
                     ctrl |= 2;
                     break;
                 default:
-                    symbol = key_lookup(ev.code, shift, altgr);
+                    symbol = key_lookup(ev.code, shift, altgr, ctrl);
                     printf("pressed %s (%i), shift=%i, altgr=%i, ctrl=%i\n", symbol, ev.code, shift, altgr, ctrl);
                     break;
                 }

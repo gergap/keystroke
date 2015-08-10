@@ -42,6 +42,7 @@ void KeyGrabber::run()
     int shift = 0;
     int altgr = 0;
     int meta = 0;
+    int ctrl = 0;
     const char *symbol = 0;
 
     while (!m_bShutdown) {
@@ -67,6 +68,12 @@ void KeyGrabber::run()
                 case KEY_RIGHTSHIFT:
                     shift &= (~2);
                     break;
+                case KEY_LEFTCTRL:
+                    ctrl &= (~1);
+                    break;
+                case KEY_RIGHTCTRL:
+                    ctrl &= (~2);
+                    break;
                 case KEY_LEFTMETA:
                     meta &= (~1);
                     break;
@@ -88,6 +95,12 @@ void KeyGrabber::run()
                 case KEY_RIGHTSHIFT:
                     shift |= 2;
                     break;
+                case KEY_LEFTCTRL:
+                    ctrl |= 1;
+                    break;
+                case KEY_RIGHTCTRL:
+                    ctrl |= 2;
+                    break;
                 case KEY_RIGHTALT:
                     altgr = 1;
                     break;
@@ -104,8 +117,8 @@ void KeyGrabber::run()
                 default:
                     break;
                 }
-                symbol = key_lookup(ev.code, shift, altgr);
-                printf("pressed %s (%i), shift=%i, altgr=%i\n", symbol, ev.code, shift, altgr);
+                symbol = key_lookup(ev.code, shift, altgr, ctrl);
+                printf("pressed %s (%i), shift=%i, altgr=%i, ctrl=%i\n", symbol, ev.code, shift, altgr, ctrl);
                 break;
             case KEY_REPEATED:
                 break;
