@@ -127,8 +127,17 @@ void KeyGrabber::run()
         }
 
         if (symbol) {
-            bool control_key = ctrl | altgr | meta;
             if (m_bEnabled) {
+                bool control_key = ctrl | altgr | meta;
+                if (ev.code == KEY_ENTER ||
+                    ev.code == KEY_ESC ||
+                    ev.code == KEY_TAB ||
+                    ev.code == KEY_LEFT ||
+                    ev.code == KEY_RIGHT ||
+                    ev.code == KEY_DOWN ||
+                    ev.code == KEY_UP) {
+                    control_key = true;
+                }
                 if (!m_bInsertMode || control_key) { /* only show control keys in insertmode */
                     QString key = QString::fromUtf8(symbol);
                     qDebug() << "QString key:" << key;

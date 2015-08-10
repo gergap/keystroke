@@ -84,13 +84,6 @@ Item {
                 }
             }
 
-            if (key == "ESC"/* || key == "ENTER"*/) {
-                //clear();
-                hide();
-                timer.stop();
-                return;
-            }
-
             timer.stop();
             timer.start();
             main.visible = true;
