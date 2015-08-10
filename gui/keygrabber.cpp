@@ -127,7 +127,7 @@ void KeyGrabber::run()
         }
 
         if (symbol) {
-            bool control_key = shift | ctrl | altgr | meta;
+            bool control_key = ctrl | altgr | meta;
             if (m_bEnabled) {
                 if (!m_bInsertMode || control_key) { /* only show control keys in insertmode */
                     QString key = QString::fromUtf8(symbol);
