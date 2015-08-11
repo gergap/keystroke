@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "enable" | nc localhost 9999
+echo "enable" | nc localhost 9999 > /dev/null 2>&1
 

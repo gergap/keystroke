@@ -1,4 +1,4 @@
 #!/bin/bash
 
-echo "insertLeave" | nc localhost 9999
+echo "insertLeave" | nc localhost 9999 > /dev/null 2>&1
 
